@@ -69,7 +69,7 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
     appturl = 'https://postgresheroku.herokuapp.com/update'
-    result = requests.post(appurl, data = data)
+    result = requests.post(appturl, data = data)
     res = json.loads(result)
     
     speech = "your appointment is confirmed! " + "Your token number: " + res.get('Token_number')
