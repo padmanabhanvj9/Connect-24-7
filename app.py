@@ -56,18 +56,18 @@ def processRequest(req):
     if req.get("result").get("action") != "bookappt":
         return {}
     data = ''
-    '''result = req.get("result")
+    result = req.get("result")
     parameters = result.get("parameters")
     docname = parameters.get("doct-name")
     apptday = parameters.get("appt-day")
     
-    
-    data = {
+    '{"name": "Frank", "age": 39}'
+    data = '{
         "business_id" : "100",
-        "customer_email": docname + "@gmail.com"
-    }
+        "customer_email": "abcd123@gmail.com"
+    }'
     print("Request parsed")
-    sys.stdout.flush()'''
+    sys.stdout.flush()
     res = makeWebhookResult(data)
     return res
 
@@ -75,11 +75,11 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
     appturl = 'https://postgresheroku.herokuapp.com/update'
-    #result = requests.post(appturl, data = data)
-    #res = json.loads(result)
+    result = requests.post(appturl, data = data)
+    res = json.loads(result)
     
-   #speech = "your appointment is confirmed! " + "Your token number: " + res.get('Token_number')
-    speech = "your appointment is confirmed! "
+    speech = "your appointment is confirmed! " + "Your token number: " + res.get('Token_number')
+    #speech = "your appointment is confirmed! "
 
     print("Response:")
     print(speech)
