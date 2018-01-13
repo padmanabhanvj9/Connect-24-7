@@ -54,6 +54,7 @@ def processRequest(req):
     if req.get("result").get("action") != "bookappt":
         return {}
     data = ''
+    result = req.get("result")
     parameters = result.get("parameters")
     docname = parameters.get("doct-name")
     apptday = parameters.get("appt-day")
