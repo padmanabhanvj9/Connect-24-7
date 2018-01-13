@@ -25,6 +25,7 @@ from urllib.error import HTTPError
 import json
 import os
 import requests
+import sys
 
 from flask import Flask
 from flask import request
@@ -40,7 +41,8 @@ def webhook():
 
     print("Request:")
     print(json.dumps(req, indent=4))
-
+    sys.stdout.flush()
+    
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
@@ -59,10 +61,13 @@ def processRequest(req):
     docname = parameters.get("doct-name")
     apptday = parameters.get("appt-day")
     
+    
     data = {
         "business_id" : "100",
         "customer_email": docname + "@gmail.com"
     }
+    print("Request parsed")
+    sys.stdout.flush()
     res = makeWebhookResult(data)
     return res
 
@@ -78,6 +83,7 @@ def makeWebhookResult(data):
 
     print("Response:")
     print(speech)
+    sys.stdout.flush()
 
     return {
         "speech": speech,
