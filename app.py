@@ -62,8 +62,8 @@ def processRequest(req):
     apptday = parameters.get("appt-day")
     
     data = {}
-        data['business_id'] = "100"
-        data['customer_email'] = docname + "@gmail.com"
+    data['business_id'] = "100"
+    data['customer_email'] = docname + "@gmail.com"
     json_data = json.dumps(data)
     
     print("Request parsed")
