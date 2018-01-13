@@ -61,7 +61,6 @@ def processRequest(req):
     docname = parameters.get("doct-name")
     apptday = parameters.get("appt-day")
     
-    '{"name": "Frank", "age": 39}'
     data = '{
         "business_id" : "100",
         "customer_email": "abcd123@gmail.com"
