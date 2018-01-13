@@ -56,7 +56,7 @@ def processRequest(req):
     if req.get("result").get("action") != "bookappt":
         return {}
     data = ''
-    result = req.get("result")
+    '''result = req.get("result")
     parameters = result.get("parameters")
     docname = parameters.get("doct-name")
     apptday = parameters.get("appt-day")
@@ -67,7 +67,7 @@ def processRequest(req):
         "customer_email": docname + "@gmail.com"
     }
     print("Request parsed")
-    sys.stdout.flush()
+    sys.stdout.flush()'''
     res = makeWebhookResult(data)
     return res
 
@@ -83,7 +83,7 @@ def makeWebhookResult(data):
 
     print("Response:")
     print(speech)
-    sys.stdout.flush()
+    #sys.stdout.flush()
 
     return {
         "speech": speech,
