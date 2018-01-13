@@ -24,6 +24,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import requests
 
 from flask import Flask
 from flask import request
@@ -53,6 +54,14 @@ def processRequest(req):
     if req.get("result").get("action") != "bookappt":
         return {}
     data = ''
+    parameters = result.get("parameters")
+    docname = parameters.get("doct-name")
+    apptday = parameters.get("appt-day")
+    
+    data = {
+        "business_id" : "100",
+        "customer_email": docname + "@gmail.com"
+    }
     res = makeWebhookResult(data)
     return res
 
@@ -60,10 +69,10 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
     appturl = 'https://postgresheroku.herokuapp.com/update'
-    result = urlopen(yql_url).read()
-    data = json.loads(result)
+    result = requests.post(appurl, data = data)
+    res = json.loads(result)
     
-    speech = "your appointment is confirmed! " + "Your token number: " + data.get('Token_number')
+    speech = "your appointment is confirmed! " + "Your token number: " + res.get('Token_number')
 
     print("Response:")
     print(speech)
