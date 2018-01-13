@@ -59,8 +59,11 @@ def processRequest(req):
 def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
-
-    speech = "your appointment is confirmed!"
+    appturl = 'https://postgresheroku.herokuapp.com/update'
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    
+    speech = "your appointment is confirmed! " + "Your token number: " + data.get('Token_number')
 
     print("Response:")
     print(speech)
