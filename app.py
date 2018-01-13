@@ -58,7 +58,7 @@ def processRequest(req):
     
     result = req.get("result")
     parameters = result.get("parameters")
-    docname = parameters.get("doct-name")
+    docname = parameters.get("doctor-name")
     apptday = parameters.get("appt-day")
     
     data = {}
