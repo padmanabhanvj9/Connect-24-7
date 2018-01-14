@@ -60,10 +60,11 @@ def processRequest(req):
     parameters = result.get("parameters")
     docname = parameters.get("doctor-name")
     apptday = parameters.get("appt-day")
+    email = parameters.get("appt-email")
     
     data = {}
     data['business_id'] = "100"
-    data['customer_email'] = docname + "@gmail.com"
+    data['customer_email'] = email
     json_data = json.dumps(data)
     
     print("Request parsed")
