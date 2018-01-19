@@ -42,7 +42,7 @@ def updatecustomerstatus(request):
           cur.execute(sql)
           con.commit()
         elif customer_current_status in ['rescheduled']:
-            sqlupdate = ("update customer_details set customer_access_datetime='"+customer_access_datetime+"',customer_appointment_time='"+customer_appointment_time+"',customer_current_status='chechedin_appointment'  where  business_id='"+business_id+"' and customer_name='"+customer_name+"' and customer_email='"+customer_email+"' and customer_appointment_date='"+customer_appointment_date+"'")
+            sqlupdate = ("update customer_details set customer_access_datetime='"+customer_access_datetime+"',customer_appointment_time='"+customer_appointment_time+"',customer_current_status='checkedin_appointment'  where  business_id='"+business_id+"' and customer_name='"+customer_name+"' and customer_email='"+customer_email+"' and customer_appointment_date='"+customer_appointment_date+"'")
             print(sqlupdate)
             cur.execute(sqlupdate)
             con.commit()
