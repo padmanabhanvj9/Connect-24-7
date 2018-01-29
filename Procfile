@@ -20,4 +20,4 @@ worker: gunicorn GetCustomerBusinessDetails.py
 worker: gunicorn AppointmentChatbots.py
 worker: gunicorn weather.py
 worker: gunicorn UpdateBusinessPrimaryData.py
-worker: gunicorn email_smtp.py
+worker: gunicorn SendEmail.py
