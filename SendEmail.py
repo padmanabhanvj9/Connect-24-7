@@ -24,7 +24,7 @@ def sendemail(request):
  server.sendmail(sender,receiver,text)
  print ("the message has been sent successfully")
  server.quit()
- return("the message has been sent successfully")
+ return json.dumps('message:'Message Send Successfully))
 #if __name__ == "__main__":
  #   app.run(debug=True)
  # app.run(host="192.168.1.5",port="5000")
