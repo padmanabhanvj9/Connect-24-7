@@ -28,7 +28,7 @@ from AppointmentChatbots import test
 from weather import webhook
 from UpdateChatbots import updatecustomerinfochatbots
 from UpdateBusinessPrimaryData import updatebusinessprimary
-from email_smtp import sendemail
+from SendEmail import sendemail
 import json
 
 app = Flask(__name__)
