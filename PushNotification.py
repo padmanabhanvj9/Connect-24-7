@@ -5,8 +5,8 @@ import sys
 import urllib.request
 from flask import Flask,request,jsonify
 app = Flask(__name__)
-@app.route('/pushnotification',methods=['POST'])
-def pushnotification():
+#@app.route('/pushnotification',methods=['POST'])
+def pushnotification(request):
     print('my first pytho script')
 
     MY_API_KEY="AtsbgtsqwN6RaghTXVzblL9It_LHu7OcAdZ"
