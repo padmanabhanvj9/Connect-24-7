@@ -12,7 +12,6 @@ def pushnotification(request):
     
     messageTitle = request.json['message']
     messageBody = request.json['body']
-    print(messageBody)
     #messageTitle = "PushNotification success..."
     #messageBody = "Appointment Confirmed"
 
