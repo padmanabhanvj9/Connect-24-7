@@ -35,7 +35,7 @@ def pushnotification(request):
         }
     )
 
-    print urlopen(requests).read()
+    print (urlopen(requests).read())
     return(urlopen(requests).read())
 
 
