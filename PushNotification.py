@@ -27,7 +27,7 @@ def pushnotification(request):
 
     dataAsJSON = json.dumps(data)
 
-    request1 = Request(
+    requests = Request(
         "https://gcm-http.googleapis.com/gcm/send",
         dataAsJSON,
         { "Authorization" : "key="+MY_API_KEY,
@@ -35,8 +35,8 @@ def pushnotification(request):
         }
     )
 
-    print urlopen(request1).read()
-    return(urlopen(request1).read())
+    print urlopen(requests).read()
+    return(urlopen(requests).read())
 
 
 #if __name__ == "__main__":
