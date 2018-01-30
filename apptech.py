@@ -29,7 +29,7 @@ from weather import webhook
 from UpdateChatbots import updatecustomerinfochatbots
 from UpdateBusinessPrimaryData import updatebusinessprimary
 from SendEmail import sendemail
-from PushNotification import pushnotification
+#from PushNotification import pushnotification
 import json
 
 app = Flask(__name__)
@@ -119,9 +119,9 @@ def GetTokenNumber():
 @app.route('/sendemail',methods=['POST'])
 def email():
    return sendemail(request)
-@app.route('/pushnotification',methods=['POST'])
-def notification():
-   return pushnotification(request)
+#@app.route('/pushnotification',methods=['POST'])
+#def notification():
+#   return pushnotification(request)
    
 @app.errorhandler(404)
 def unhandled_exception(e):
