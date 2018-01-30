@@ -122,7 +122,6 @@ def email():
 @app.route('/pushnotification',methods=['POST'])
 def notification():
    return pushnotification(request)
-
    
 @app.errorhandler(404)
 def unhandled_exception(e):
