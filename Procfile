@@ -21,4 +21,5 @@ worker: gunicorn AppointmentChatbots.py
 worker: gunicorn weather.py
 worker: gunicorn UpdateBusinessPrimaryData.py
 worker: gunicorn SendEmail.py
+worker: gunicorn PushNotification.py
 
