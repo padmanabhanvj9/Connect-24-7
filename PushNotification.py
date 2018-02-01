@@ -6,15 +6,16 @@ import urllib.request
 from flask import Flask,request,jsonify
 
 app = Flask(__name__)
-@app.route('/pushnotification',methods=['POST'])
-def pushnotification():
+#@app.route('/pushnotification',methods=['POST'])
+def pushnotification(request):
 
         print('my first pytho script')
 
         MY_API_KEY="AtsbgtsqwN6RaghTXVzblL9It_LHu7OcAdZ"
-
-        messageTitle = sys.argv[1]
-        messageBody = sys.argv[2]
+        messageTitle = request.json['message']
+        messageBody = request.json['body']
+        #messageTitle = sys.argv[1]
+        #messageBody = sys.argv[2]
 
         values={
         "to" : "/topics/my_little_topic",
@@ -27,7 +28,7 @@ def pushnotification():
 
         dataAsJSON = json.dumps(values).encode('utf-8')
 
-        request = urllib.request.Request(
+        request1 = urllib.request.Request(
         "https://gcm-http.googleapis...",
         dataAsJSON ,
         { "Authorization" : "key="+MY_API_KEY,
@@ -35,8 +36,8 @@ def pushnotification():
         }
         )
 
-        print(urllib.request.urlopen(request).read())
-        return(urllib.request.urlopen(request).read())
-if __name__ == "__main__":
+        print(urllib.request.urlopen(request1).read())
+        return(urllib.request.urlopen(request1).read())
+#if __name__ == "__main__":
  #   app.run(debug=True)
-  app.run(host="192.168.1.35",port="5000")
+ # app.run(host="192.168.1.35",port="5000")
