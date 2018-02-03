@@ -127,7 +127,7 @@ def notification():
 @app.route('/InsertCustomerLoginData',methods=['POST'])
 def customerlogindata():
    return insertcustomerlogindata(request)
-@app.route('/QueryCustomerLoginData',methods=['POST'])
+@app.route('/QueryCustomerLoginData',methods=['GET'])
 def querycustomerlogin():
    return QueryCustomerLoginData()
 
