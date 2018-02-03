@@ -30,7 +30,7 @@ def getcustomerdetailsall():
      elif  request.args.get('business_id'):
         business_id = request.args['business_id']
         print("2")
-        sql = ("select * from customer_details where business_id="+business_id+" order by case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
+        sql = ("select * from customer_details where business_id="+business_id+" order by customer_appointment_date,case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
         print(sql)
         return(callfn(sql)) 
      elif  request.args.get('appointment_date'):
@@ -45,5 +45,4 @@ def getcustomerdetailsall():
      con.close()    
 #if __name__ == "__main__":
     #app.run(debug=True)
- #  app.run(host="192.168.1.7",port="5000")
-    
+ #  app.run(host="192.168.1.4",port="5000")
