@@ -20,13 +20,21 @@ def callfn(sql):
      return(fresult)     
 def getcustomerdetailsall():
      print("getcustomerdetailsall")
-     if request.args.get('business_id') and request.args.get('appointment_date'):
+     if  request.args.get('business_id') and request.args.get('appointment_date_from') and request.args.get('appointment_date_to'):
+        business_id = request.args['business_id']
+        customer_appointment_date_from = request.args['appointment_date_from'] 
+        customer_appointment_date_to = request.args['appointment_date_to']
+        sql = ("select * from customer_details where business_id="+business_id+" and customer_appointment_date between  '"+customer_appointment_date_from+"' and  '"+customer_appointment_date_to+"'order by customer_appointment_date,case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
+        print(sql)
+        return(callfn(sql))     
+     elif request.args.get('business_id') and request.args.get('appointment_date'):
         business_id = request.args['business_id']
         customer_appointment_date = request.args['appointment_date']
         print("1")
         sql = ("select * from customer_details where business_id="+business_id+" and customer_appointment_date='"+customer_appointment_date+"' order by case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
         print(sql)
-        return(callfn(sql)) 
+        return(callfn(sql))
+
      elif  request.args.get('business_id'):
         business_id = request.args['business_id']
         print("2")
@@ -37,12 +45,14 @@ def getcustomerdetailsall():
         customer_appointment_date = request.args['appointment_date']
         sql = ("select * from customer_details where customer_appointment_date='"+customer_appointment_date+"' order by case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
         print(sql)
-        return(callfn(sql)) 
+        return(callfn(sql))
+        
      else:
-        sql = ("select * from customer_details order by case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
+        sql = ("select * from customer_details order by customer_appointment_date,case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
         print(sql)
         return(callfn(sql))
      con.close()    
 #if __name__ == "__main__":
     #app.run(debug=True)
  #  app.run(host="192.168.1.4",port="5000")
+    
