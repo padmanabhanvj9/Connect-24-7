@@ -3,8 +3,8 @@ import datetime
 import psycopg2
 from flask import Flask,request,jsonify
 app = Flask(__name__)
-@app.route('/InsertCustomerLoginData',methods=['POST'])
-def insertcustomerlogindata():
+#@app.route('/InsertCustomerLoginData',methods=['POST'])
+def insertcustomerlogindata(request):
 
      customer_login_id = request.json['customer_login_id']
      customer_login_mobile = request.json['customer_login_mobile']
@@ -22,6 +22,6 @@ def insertcustomerlogindata():
      return(json.dumps({'Status': 'Success', 'StatusCode': '200','Message': 'Customer Login or Logout record inserted successfully'}, sort_keys=True, indent=4))
      con.close()
      
-if __name__ == "__main__":
+#if __name__ == "__main__":
   # app.run(debug=True)
-  app.run(host="192.168.1.8",port=5000)
+  #app.run(host="192.168.1.8",port=5000)
