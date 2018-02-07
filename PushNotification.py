@@ -11,7 +11,7 @@ def pushnotification(request):
 
         print('my first pytho script')
 
-        MY_API_KEY="AtsbgtsqwN6RaghTXVzblL9It_LHu7OcAdZ"
+        MY_API_KEY="AIzaSyAQDQSMLhW0ihrRWaDASWPUi-U078lUn4c"
         messageTitle = request.json['message']
         messageBody = request.json['body']
         #messageTitle = sys.argv[1]
