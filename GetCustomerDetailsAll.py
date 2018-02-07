@@ -46,6 +46,11 @@ def getcustomerdetailsall():
         sql = ("select * from customer_details where customer_appointment_date='"+customer_appointment_date+"' order by case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
         print(sql)
         return(callfn(sql))
+     elif  request.args.get('customer_mobile'):
+        customer_mobile = request.args['customer_mobile']
+        sql = ("select * from customer_details where customer_mobile='"+customer_mobile+"' order by customer_appointment_date")
+        print(sql)
+        return(callfn(sql))
         
      else:
         sql = ("select * from customer_details order by customer_appointment_date,case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
