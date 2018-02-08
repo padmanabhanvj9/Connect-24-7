@@ -8,5 +8,6 @@ rfc5424-logging-handler==1.0.3
 tzlocal==1.4
 Werkzeug==0.12.2
 urllib3==1.22
-
+request==0.0.26
+requests==2.18.4
 
