@@ -1,7 +1,9 @@
 import sys
 #from urllib2 import *
 #from urllib2 import urlopen
+from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
+from urllib.error import HTTPError
 #from urllib.request import urlopen
 import json
 import urllib
