@@ -33,8 +33,7 @@ def pushnotificationall(request):
     dataAsJSON = json.dumps(data)
 
     request1 = urllib.request.Request(
-        "https://gcm-http.googleapis.com/gcm/send", headers = {'User-Agent' :\
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36"},dataAsJSON,
+        "https://gcm-http.googleapis.com/gcm/send",dataAsJSON,
         { "Authorization" : "key="+MY_API_KEY,
           "Content-type" : "application/json"
         }
