@@ -1,6 +1,7 @@
 import sys
-from urllib2 import *
+#from urllib2 import *
 #from urllib2 import urlopen
+from urllib.request import urlopen
 import json
 import urllib
 from flask import Flask,request,jsonify
