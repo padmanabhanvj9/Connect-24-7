@@ -28,7 +28,7 @@ def pushnotificationall(request):
             "icon" : "ic_cloud_white_48dp"
         }
     }
-    print(data)
-    return(data)
+    print("hi ")
+    return("hello")
 
 
