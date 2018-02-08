@@ -40,5 +40,7 @@ def pushnotificationall(request):
         }
     )
     print(request1)
-    return("done")
+    
+    #print (urlopen(request1).read())
+    return(urlopen(request1).read())
 
