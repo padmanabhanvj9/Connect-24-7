@@ -41,11 +41,17 @@ def pushnotificationall(request):
     )
     print(request1)
     
-    #print (urlopen(request1).read())
-    #value = urlopen(request1).read()
-    #return(json.dumps(value))
-    resource = urllib.request.urlopen(request1)
-    content =  resource .read().decode(resource .headers.get_content_charset())
-    print(content)
-    return(content)
+    url = 'https://gcm-http.googleapis.com/gcm/send'
+    values =  { "Authorization" : "key="+MY_API_KEY,
+                "Content-type" : "application/json",
+                "datajson": dataAsJSON
+        }
+   
+    data = urllib.parse.urlencode(values)
+    req = urllib.request.Request(url, data)
+    response = urllib.request.urlopen(req)
+    the_page = response.read()
+    print(the_page)
+    return(the_page)
+    
 
