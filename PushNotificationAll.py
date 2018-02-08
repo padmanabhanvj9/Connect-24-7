@@ -42,10 +42,10 @@ def pushnotificationall(request):
     print(request1)
     
     #print (urlopen(request1).read())
-    value = urlopen(request1).read()
+    #value = urlopen(request1).read()
     #return(json.dumps(value))
-   # resource = urllib.request.urlopen(an_url)
-    content =  value.read().decode(value.headers.get_content_charset())
+    resource = urllib.request.urlopen(request1)
+    content =  resource .read().decode(resource .headers.get_content_charset())
     print(content)
     return(content)
 
