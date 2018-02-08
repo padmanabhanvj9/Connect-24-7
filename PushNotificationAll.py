@@ -13,12 +13,13 @@ app = Flask(__name__)
 #@app.route('/pushnotificationall',methods=['POST'])
 def pushnotificationall(request):
     MY_API_KEY = "AIzaSyAQDQSMLhW0ihrRWaDASWPUi-U078lUn4c"
+    print(MY_API_KEY)
 
     #messageTitle = sys.argv[1]
     #messageBody = sys.argv[2]
     messageTitle = request.json['message']
     messageBody = request.json['body']
-    print(messageBody)
+    print(messageBody,messageTitle)
     data={
         "to" : "/topics/my_little_topic",
         "notification" : {
@@ -27,9 +28,9 @@ def pushnotificationall(request):
             "icon" : "ic_cloud_white_48dp"
         }
     }
-
+    print(data)
     dataAsJSON = json.dumps(data)
-
+    print(dataAsJSON)
     request1 = Request(
         "https://gcm-http.googleapis.com/gcm/send",
         dataAsJSON,
@@ -37,7 +38,7 @@ def pushnotificationall(request):
           "Content-type" : "application/json"
         }
     )
-
+    print(request1)
     print (urlopen(request1).read())
     return(urlopen(request1).read())
 
