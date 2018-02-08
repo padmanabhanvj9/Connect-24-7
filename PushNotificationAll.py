@@ -29,6 +29,6 @@ def pushnotificationall(request):
         }
     }
     print("hi ")
-    return("hello")
+    return(data)
 
 
