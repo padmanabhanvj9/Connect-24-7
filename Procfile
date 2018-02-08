@@ -23,3 +23,5 @@ worker: gunicorn UpdateBusinessPrimaryData.py
 worker: gunicorn SendEmail.py
 worker: gunicorn InsertCustomerLoginData.py
 worker: gunicorn QueryCustomerLoginData.py
+worker: gunicorn PushNotificationAll.py
+worker: gunicorn PushNotification.py
