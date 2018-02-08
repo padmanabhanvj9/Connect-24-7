@@ -29,6 +29,7 @@ def pushnotificationall(request):
         }
     }
     print("hi ")
-    return(json.dumps(data))
-
+    
+    dataAsJSON = json.dumps(data)
+    return(dataAsJSON)
 
