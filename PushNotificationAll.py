@@ -30,7 +30,8 @@ def pushnotificationall(request):
     }
     print(data)
     return(data)
-   ''' dataAsJSON = json.dumps(data)
+   ''' 
+    dataAsJSON = json.dumps(data)
     print(dataAsJSON)
     request1 = Request(
         "https://gcm-http.googleapis.com/gcm/send",
