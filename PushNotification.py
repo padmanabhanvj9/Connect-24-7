@@ -12,8 +12,10 @@ def pushnotification(request):
 
     #messageTitle = sys.argv[1]
     #messageBody = sys.argv[2]
-    messageTitle = "PushNotification success..."
-    messageBody = "Appointment Confirmed"
+    messageTitle = request.json['message']
+    messageBody = request.json['body']
+    #messageTitle = "PushNotification success..."
+    #messageBody = "Appointment Confirmed"
 #"to" : "/topics/my_little_topic",
     data={
         "to" : "erfSJuB-PAE:APA91bFK-hHU17WreM8YAJBHC_RONgpZ96f4AglKYuy48x1h7wSmdggl4f2a_JdwB84rId1D7qb-NnKna4zQtZEY6tyKmDclwQOHAg1Ue9aRjB2Q8OhqjrJFJJ9Wmw8_OE98YfXBbDey",
