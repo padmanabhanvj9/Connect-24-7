@@ -16,8 +16,8 @@ def updatecustomerinfo(request):
         business_id = request.args['business_id']
         customer_email = request.args['customer_email']
         customer_appointment_date = request.args['customer_appointment_date']
-        reson_code = request.args['reson_code'] 
-        upsql = "update customer_details set reason_code='"+reson_code+"' where business_id="+business_id+" and customer_email='"+customer_email+"' and  customer_appointment_date='"+customer_appointment_date+"'"
+        reason_code = request.args['reason_code'] 
+        upsql = "update customer_details set reason_code='"+reason_code+"' where business_id="+business_id+" and customer_email='"+customer_email+"' and  customer_appointment_date='"+customer_appointment_date+"'"
         print(upsql)
         cursor.execute(upsql)
         con.commit()
