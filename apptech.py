@@ -44,7 +44,7 @@ def hello():
 def helloName(data):
    return data
 
-@app.route('/UpdateCustomerInfo',methods=['POST'])
+@app.route('/UpdateCustomerInfo',methods=['POST','GET'])
 def updateinfo():
    return updatecustomerinfo(request)
 
