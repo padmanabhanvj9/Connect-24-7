@@ -39,7 +39,7 @@ def sendemail(request):
  </html>
  """
  
- msg.attach(MIMEText(msg['subject'],'plain'))
+ #msg.attach(MIMEText(msg['subject'],'plain'))
  msg.attach(MIMEText(html,'html'))
  
  gmailuser = 'infocuit.aravindh@gmail.com'
