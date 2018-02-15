@@ -2,7 +2,7 @@ import sys
 #from urllib2 import *
 #import urllib.request  as urllib2 
 #from urllib.request import urlopen
-from urllib2 import urlopen
+#from urllib2 import urlopen
 import json
 import urllib
 from flask import Flask,request,jsonify
