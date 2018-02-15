@@ -21,7 +21,7 @@ def pushnotificationall(request):
     messageBody = request.json['body']
     print(messageBody,messageTitle)
     data={
-        "to" : "/topics/my_little_topic",
+        "to" : "erfSJuB-PAE:APA91bFK-hHU17WreM8YAJBHC_RONgpZ96f4AglKYuy48x1h7wSmdggl4f2a_JdwB84rId1D7qb-NnKna4zQtZEY6tyKmDclwQOHAg1Ue9aRjB2Q8OhqjrJFJJ9Wmw8_OE98YfXBbDey",
         "notification" : {
             "body" : messageBody,
             "title" : messageTitle,
