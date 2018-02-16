@@ -29,11 +29,15 @@ def pushnotificationall(request):
         }
     }
     print(data)
-    dataAsJSON = json.dumps(data)
-    print(dataAsJSON)
+    #dataAsJSON = json.dumps(data)
+    #print(dataAsJSON)
+    #dataAsJSON
+    dataencode = urllib.parse.urlencode(data)
+    dataencodeutf=dataencode.encode('utf-8')
+    print(dataencode)
     request1 = Request(
         "https://gcm-http.googleapis.com/gcm/send",
-        dataAsJSON,
+        dataencodeutf,
         { "Authorization" : "key="+MY_API_KEY,
           "Content-type" : "application/json"
         }
