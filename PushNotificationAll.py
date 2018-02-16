@@ -34,7 +34,17 @@ def pushnotificationall(request):
     #dataAsJSON
     dataencode = urllib.parse.urlencode(data)
     dataencodeutf=dataencode.encode('utf-8')
+    
     print(dataencode)
+    
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "key="+MY_API_KEY,
+        "Content-Length": str(len(dataencodeutf))
+    }
+ 
+    request1 = Request("https://gcm-http.googleapis.com/gcm/send", dataencodeutf, headers)
+    '''
     request1 = Request(
         "https://gcm-http.googleapis.com/gcm/send",
         dataencodeutf,
@@ -42,6 +52,8 @@ def pushnotificationall(request):
           "Content-type" : "application/json"
         }
     )
+    '''
+    
     print(request1)
     print (urlopen(request1).read())
     return(urlopen(request1).read())
