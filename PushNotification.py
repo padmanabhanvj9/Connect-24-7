@@ -26,7 +26,7 @@ def pushnotification(request):
     # Send to multiple devices by passing a list of ids.
     client.send([registration_id], alert)
 
-    return 'pushnotification sent'
+     return(json.dumps({'Status': 'Success', 'StatusCode': '200','Message': 'Push Notification sent'}, sort_keys=True, indent=4))
 
 #if __name__ == '__main__':
    #app.run()
