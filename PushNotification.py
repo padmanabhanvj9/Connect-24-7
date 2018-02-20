@@ -3,8 +3,8 @@ from flask import Flask,request
 import json
 app = Flask(__name__)
 
-#@app.route('/pushnotificationall',methods=['POST'])
-def pushnotificationall(request):
+#@app.route('/pushnotification',methods=['POST'])
+def pushnotification(request):
     Title = request.json['title']
     Body = request.json['body']
     Id = request.json['id']
