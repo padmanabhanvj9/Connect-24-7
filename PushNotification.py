@@ -1,49 +1,33 @@
-import sys
-#from urllib2 import *
-#from urllib2 import urlopen
-from urllib.parse import urlparse, urlencode
-from urllib.request import urlopen, Request
-from urllib.error import HTTPError
-#from urllib.request import urlopen
+from pushjack import GCMClient
+from flask import Flask,request
 import json
-import urllib
-from flask import Flask,request,jsonify
 app = Flask(__name__)
 
-#@app.route('/pushnotification',methods=['POST'])
-def pushnotification(request):
-    MY_API_KEY = "AIzaSyAQDQSMLhW0ihrRWaDASWPUi-U078lUn4c"
+#@app.route('/pushnotificationall',methods=['POST'])
+def pushnotificationall(request):
+    Title = request.json['title']
+    Body = request.json['body']
+    Id = request.json['id']
+    client = GCMClient(api_key='AIzaSyAQDQSMLhW0ihrRWaDASWPUi-U078lUn4c')
 
-    #messageTitle = sys.argv[1]
-    #messageBody = sys.argv[2]
-    messageTitle = request.json['message']
-    messageBody = request.json['body']
-    #messageTitle = "PushNotification success..."
-    #messageBody = "Appointment Confirmed"
-#"to" : "/topics/my_little_topic",
-    data={
-        "to" : "erfSJuB-PAE:APA91bFK-hHU17WreM8YAJBHC_RONgpZ96f4AglKYuy48x1h7wSmdggl4f2a_JdwB84rId1D7qb-NnKna4zQtZEY6tyKmDclwQOHAg1Ue9aRjB2Q8OhqjrJFJJ9Wmw8_OE98YfXBbDey",
-        "notification" : {
-            "body" : messageBody,
-            "title" : messageTitle,
-            "icon" : "ic_cloud_white_48dp"
-        }
-    }
+    registration_id = Id
+    alert = 'Hello world.'
+    notification = {'title': Title, 'body': Body, 'icon': 'icon'}
 
-    dataAsJSON = json.dumps(data)
+    # Send to single device.
+    # NOTE: Keyword arguments are optional.
+    res = client.send(registration_id,
+                      alert,
+                      notification=notification,
+                      collapse_key='collapse_key',
+                      delay_while_idle=True,
+                      time_to_live=604800)
 
-    request1 = Request(
-        "https://gcm-http.googleapis.com/gcm/send",
-        dataAsJSON,
-        { "Authorization" : "key="+MY_API_KEY,
-          "Content-type" : "application/json"
-        }
-    )
+    # Send to multiple devices by passing a list of ids.
+    client.send([registration_id], alert)
 
-    print (urlopen(request1).read())
-    return(urlopen(request1).read())
+    return 'pushnotification sent'
 
-#pushnotification()
-#if __name__ == "__main__":
- #   app.run(debug=True)
- # app.run(host="192.168.1.2",port=5000)
+#if __name__ == '__main__':
+   #app.run()
+ #  app.run(host="192.168.1.5",port=5000)
