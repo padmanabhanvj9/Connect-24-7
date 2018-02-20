@@ -3,6 +3,7 @@ import psycopg2
 import datetime
 from flask import Flask,request,jsonify
 app = Flask(__name__)
+#@app.route("/averagewait",methods=['GET'])
 def avgwaittime():
     if request.args.get('business_id'):
         business_id = request.args['business_id'] 
@@ -23,16 +24,19 @@ def avgwaittime():
     print(type(wait_time[1]),wait_time[1])
     waittime = wait_time[0]
     appointment_type = wait_time[1]
-    psql = ("select customer_access_datetime from customer_details where business_id = "+business_id+" and customer_appointment_date='"+customer_appointment_date+"' and customer_email='"+customer_email+"'")
+    psql = ("select customer_token_num from customer_details where business_id = "+business_id+" and customer_appointment_date='"+customer_appointment_date+"' and customer_email='"+customer_email+"'")
     cur.execute(psql)
     data1 = cur.fetchone()
-    for accessdatetime in data1:
-     accessdatetime = str(accessdatetime)
-    accessdatetime = datetime.datetime.strptime(accessdatetime, '%Y-%m-%d %H:%M:%S')
-    accessdatetime = accessdatetime-datetime.timedelta(seconds=1)
-    print(accessdatetime,type(accessdatetime))
-    accessdatetime = str(accessdatetime)
-    psql2 = ("select count(*) from (select * from customer_details order by customer_access_datetime ) customer_details where business_id="+business_id+" and customer_appointment_date='"+customer_appointment_date+"' and customer_current_status in('booked')and customer_access_datetime between '"+customer_appointment_date+"' and '"+accessdatetime+"'")
+    for token_num in data1:
+        print(type(token_num),token_num)
+        token_num = int(token_num)
+        tokennumber = token_num
+    subtoken = token_num - 1
+    subtoken = str(subtoken)
+    
+    print(subtoken,type(subtoken))
+ 
+    psql2 = ("select count(*) from (select * from customer_details order by case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num) customer_details where business_id="+business_id+" and customer_appointment_date='"+customer_appointment_date+"' and customer_current_status in('booked')and customer_token_num between '0' and '"+subtoken+"'")
     cur.execute(psql2)
     print(psql2)
     resultcount = cur.fetchone()
@@ -49,9 +53,7 @@ def avgwaittime():
     cur.close()
     con.close()      
  
-    
- 
- 
+
  
     
 
