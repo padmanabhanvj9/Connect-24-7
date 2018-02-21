@@ -26,7 +26,13 @@ def getcustomerdetailsall():
         customer_appointment_date_to = request.args['appointment_date_to']
         sql = ("select * from customer_details where business_id="+business_id+" and customer_appointment_date between  '"+customer_appointment_date_from+"' and  '"+customer_appointment_date_to+"'order by customer_appointment_date,case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
         print(sql)
-        return(callfn(sql))     
+        return(callfn(sql))
+     elif  request.args.get('appointment_date_from') and request.args.get('appointment_date_to'):
+        customer_appointment_date_from = request.args['appointment_date_from'] 
+        customer_appointment_date_to = request.args['appointment_date_to']
+        sql = ("select * from customer_details where customer_appointment_date between  '"+customer_appointment_date_from+"' and  '"+customer_appointment_date_to+"'order by customer_appointment_date,case when substring(customer_token_num from '^\d+$') is null then 9999 else cast(customer_token_num as integer) end,customer_token_num")
+        print(sql)
+        return(callfn(sql)) 
      elif request.args.get('business_id') and request.args.get('appointment_date'):
         business_id = request.args['business_id']
         customer_appointment_date = request.args['appointment_date']
