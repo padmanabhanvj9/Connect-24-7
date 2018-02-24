@@ -6,13 +6,26 @@ app = Flask(__name__)
 
 #@app.route('/update',methods=['POST'])
 def updatecustomerinfo(request):
+    try:
+     con = psycopg2.connect(user='quywvejawxhnse',password='065fe8ac62d76caa061d1e517b2f0107b5776f767037c2e29cad16c259a771cf',host='ec2-176-34-113-15.eu-west-1.compute.amazonaws.com',port='5432',database='d3opaj0jiqsm0h')
+     cursor = con.cursor()
+    except psycopg2.Error :
+       return (json.dumps({'Status': 'Failure','Message':'DB connection Error'}, sort_keys=True, indent=4)) 
 
+    if request.method == 'GET':
+        business_id = request.args['business_id']
+        customer_email = request.args['customer_email']
+        customer_appointment_date = request.args['customer_appointment_date']
+        reson_code = request.args['reson_code'] 
+        upsql = "update customer_details set reason_code='"+reson_code+"' where business_id="+business_id+" and customer_email='"+customer_email+"' and  customer_appointment_date='"+customer_appointment_date+"'"
+        print(upsql)
+        cursor.execute(upsql)
+        con.commit()
+        return(json.dumps({'Status': 'Success', 'StatusCode': '200','Message': 'customer details updated successfully'}, sort_keys=True, indent=4))
+        
     current_time = datetime.datetime.utcnow()+datetime.timedelta(hours=5, minutes=30)
     current_time = current_time.strftime('%H:%M')
-    Today_date = datetime.datetime.utcnow().date().strftime('%Y-%m-%d')
-    Tomorrow_date = datetime.datetime.utcnow().date()+ datetime.timedelta(days=1)
-    Tomorrow_date = Tomorrow_date.strftime('%Y-%m-%d')
-    print(Tomorrow_date) 
+    Today_date = datetime.datetime.utcnow().date().strftime('%Y-%m-%d') 
     print(Today_date)
     business_id = request.json['business_id']
     customer_checkin_date = request.json['customer_checkin_date']
@@ -29,12 +42,6 @@ def updatecustomerinfo(request):
     customer_deviceid = request.json['customer_deviceid']
     customer_consolidated_activities = request.json['customer_consolidated_activities']
     customer_appointment_date = request.json['customer_appointment_date']
-    print(type(customer_appointment_date ))
-    try:
-     con = psycopg2.connect(user='quywvejawxhnse',password='065fe8ac62d76caa061d1e517b2f0107b5776f767037c2e29cad16c259a771cf',host='ec2-176-34-113-15.eu-west-1.compute.amazonaws.com',port='5432',database='d3opaj0jiqsm0h')
-     cursor = con.cursor()
-    except psycopg2.Error :
-       return (json.dumps({'Status': 'Failure','Message':'DB connection Error'}, sort_keys=True, indent=4)) 
     sqlend = ("select business_hour_end ,business_appointment_type from business_primary where  business_id = "+business_id+" ")
     print(sqlend)
     cursor.execute(sqlend)
@@ -44,8 +51,8 @@ def updatecustomerinfo(request):
     print(business_end_time)
     print( b_type)
     if b_type in ['token']:
-      if customer_appointment_date > Tomorrow_date:
-          return (json.dumps({'Status': 'Success', 'StatusCode': '200','Message':"Token can't be generated other than today and tomorrow"}, sort_keys=True, indent=4)) 
+      if customer_appointment_date != Today_date:
+          return (json.dumps({'Status': 'Success', 'StatusCode': '200','Message':"Token can't be generated other than today"}, sort_keys=True, indent=4)) 
       if business_end_time <= current_time :
           return (json.dumps({'Status': 'Success', 'StatusCode': '200','Message':'AOH'}, sort_keys=True, indent=4))
       else:
