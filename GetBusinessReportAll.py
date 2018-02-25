@@ -5,14 +5,11 @@ from flask import Flask,request,jsonify
 app = Flask(__name__)
 #@app.route('/GetBusinessReportAll',methods=['GET'])     
 def getbusinessreportall(request):
+     business_group = request.args['business_group']     
      if request.args.get('business_group') and request.args.get('date_from') and request.args.get('date_to'):
-        business_group = request.args['business_group']
         date_from = request.args['date_from']
         date_to = request.args['date_to']
-        #sql = ("select count(*) from customer_details where business_id="+business_id+" and customer_appointment_date between  '"+date_from+"' and '"+date_to+"' and customer_current_status in ('checkedout')")
-        print(sql)
      elif request.args.get('business_group'):
-        business_group = request.args['business_group']
         Today_date = datetime.datetime.utcnow().date().strftime('%Y-%m-%d')
         date_from = Today_date
         date_to = Today_date
