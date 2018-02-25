@@ -33,6 +33,7 @@ from PushNotification import pushnotification
 from InsertCustomerLoginData import insertcustomerlogindata
 from QueryCustomerLoginData import QueryCustomerLoginData
 from PushNotificationAll import pushnotificationall
+from GetBusinessReportAll import getbusinessreportall
 import json
 
 app = Flask(__name__)
@@ -134,6 +135,9 @@ def querycustomerlogin():
 @app.route('/pushnotificationall',methods=['POST'])
 def notificationall():
    return pushnotificationall(request)
+@app.route('/GetBusinessReportAll',methods=['GET'])     
+def reportall():
+   return getbusinessreportall(request)
 
 @app.errorhandler(404)
 def unhandled_exception(e):
@@ -145,4 +149,4 @@ def unhandled_exception(e):
 
 if __name__ == "__main__":
    app.run(debug=True)
-  #app.run(host="192.168.1.8",port=5000)
+  #app.run(host="192.168.1.35",port=5000)
