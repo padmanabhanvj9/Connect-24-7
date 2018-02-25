@@ -30,7 +30,7 @@ def getbusinessreportall(request):
         else:
            business_id.append(a)  
         y+=1
-     x=0   
+        
      for b_id in business_id:
          b_id = str(b_id) 
          sql1 = "select count(*) from customer_details where business_id='"+b_id+"' and customer_appointment_date between '"+date_from+"' and '"+date_to+"' and customer_current_status in ('checkedout')"
@@ -40,7 +40,7 @@ def getbusinessreportall(request):
          for i in result:
               count.append(i)
          print(count)
-         
+     x=0    
      for name in business_name:
           values.append([])
           values[x].append(business_id[x])
