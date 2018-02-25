@@ -18,14 +18,19 @@ def getbusinessreportall(request):
       cur = con.cursor()
      except psycopg2.Error :
        return (json.dumps({'Status': 'Failure','Message':'DB connection Error'}, sort_keys=True, indent=4))
-     sql = "select business_id from business_primary where business_group= '"+business_group+"'"
+     sql = "select business_id,business_first_name from business_primary where business_group= '"+business_group+"'"
      cur.execute(sql)
      result = cur.fetchall()
-     business_id,count = [],[]
-     for i in result:
+     val,business_id,count,business_name,values,d,e = [],[],[],[],[[]],{},{}
+     y=1
+     for i in result: 
        for a in i:
-         business_id.append(a) 
-     #return(json.dumps({"business_id":business_id}))
+        if y % 2 == 0:  
+           business_name.append(a)
+        else:
+           business_id.append(a)  
+        y+=1
+     x=0   
      for b_id in business_id:
          b_id = str(b_id) 
          sql1 = "select count(*) from customer_details where business_id='"+b_id+"' and customer_appointment_date between '"+date_from+"' and '"+date_to+"' and customer_current_status in ('checkedout')"
@@ -35,7 +40,18 @@ def getbusinessreportall(request):
          for i in result:
               count.append(i)
          print(count)
-     return(json.dumps({"count":count}))    
+         
+     for name in business_name:
+          values.append([])
+          values[x].append(business_id[x])
+          values[x].append(count[x])
+          #e['business_id'] = business_id[x]
+          #e['count'] = count[x]
+          d[name] = values[x]
+          #d[name] = e
+          x +=1
+     print(values)
+     return(json.dumps({"doctures":d},indent =2))    
      con.close()    
 #if __name__ == "__main__":
     #app.run(debug=True)
