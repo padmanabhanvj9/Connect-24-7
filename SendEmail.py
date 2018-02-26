@@ -42,8 +42,8 @@ def sendemail(request):
  #msg.attach(MIMEText(msg['subject'],'plain'))
  msg.attach(MIMEText(html,'html'))
  
- gmailuser = 'infocuit.testing@gmail.com'
- password = 'infocuit@123'
+ gmailuser = 'infocuit.appointment@gmail.com'
+ password = 'P@#11word'
  server = smtplib.SMTP('smtp.gmail.com',587)
  server.starttls()
  server.login(gmailuser,password)
