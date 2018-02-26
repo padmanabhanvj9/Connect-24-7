@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from flask import Flask,request,jsonify
 app = Flask(__name__)
 #@app.route('/sendemailall',methods=['POST'])
-def sendemailall():
+def sendemailall(request):
  try:
       con = psycopg2.connect(user='quywvejawxhnse',password='065fe8ac62d76caa061d1e517b2f0107b5776f767037c2e29cad16c259a771cf',host='ec2-176-34-113-15.eu-west-1.compute.amazonaws.com',port='5432',database='d3opaj0jiqsm0h')
       cur = con.cursor()
