@@ -25,3 +25,4 @@ worker: gunicorn InsertCustomerLoginData.py
 worker: gunicorn QueryCustomerLoginData.py
 worker: gunicorn PushNotificationAll.py
 worker: gunicorn GetBusinessReportAll.py
+worker: gunicorn GetBusinessReportIndividual.py
