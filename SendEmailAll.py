@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from flask import Flask,request,jsonify
 app = Flask(__name__)
-@app.route('/sendemailall',methods=['POST'])
+#@app.route('/sendemailall',methods=['POST'])
 def sendemailall():
  try:
       con = psycopg2.connect(user='quywvejawxhnse',password='065fe8ac62d76caa061d1e517b2f0107b5776f767037c2e29cad16c259a771cf',host='ec2-176-34-113-15.eu-west-1.compute.amazonaws.com',port='5432',database='d3opaj0jiqsm0h')
@@ -88,6 +88,6 @@ def sendemailall():
      server.quit()
  print ("the message has been sent successfully")    
  return(json.dumps({'Message': 'Message Send Successfully'}, sort_keys=True, indent=4))
-if __name__ == "__main__":
+#if __name__ == "__main__":
  #   app.run(debug=True)
-  app.run(host="192.168.1.6",port=5000)
+  #app.run(host="192.168.1.6",port=5000)
