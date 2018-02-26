@@ -77,8 +77,8 @@ def sendemailall(request):
      #msg.attach(MIMEText(msg['subject'],'plain'))
      msg.attach(MIMEText(html,'html'))
      
-     gmailuser = 'infocuit.aravindh@gmail.com'
-     password = '0487nand'
+     gmailuser = 'infocuit.testing@gmail.com'
+     password = 'infocuit@123'
      server = smtplib.SMTP('smtp.gmail.com',587)
      server.starttls()
      server.login(gmailuser,password)
