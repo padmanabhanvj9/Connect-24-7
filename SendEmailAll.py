@@ -46,7 +46,7 @@ def sendemailall(request):
  #for receiver in email:
  while len_mail != x:
  #for  email in mail[x]:
-     print(mail[x])
+     #print(mail[x])
      msg['to'] = mail[x]
      msg['subject'] = subject
      # Create the body of the message (a plain-text and an HTML version)
