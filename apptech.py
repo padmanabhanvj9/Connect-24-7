@@ -35,6 +35,7 @@ from QueryCustomerLoginData import QueryCustomerLoginData
 from PushNotificationAll import pushnotificationall
 from GetBusinessReportAll import getbusinessreportall
 from GetBusinessReportIndividual import getbusinessreport
+from SendEmailAll import sendemailall
 import json
 
 app = Flask(__name__)
@@ -142,6 +143,9 @@ def reportall():
 @app.route('/GetBusinessReportIndividual',methods=['GET'])
 def reportindividual():
   return getbusinessreport()
+@app.route('/SendEmailAll',methods=['POST'])
+def senedmailindividual():
+   return sendemailall(request)
 
 @app.errorhandler(404)
 def unhandled_exception(e):
