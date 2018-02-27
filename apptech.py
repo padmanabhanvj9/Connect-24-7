@@ -37,6 +37,7 @@ from GetBusinessReportAll import getbusinessreportall
 from GetBusinessReportIndividual import getbusinessreport
 from SendEmailAll import sendemailall
 from GetBusinessReportAllDate import getbusinessreportalldate
+from SendSms import sendsms
 import json
 
 app = Flask(__name__)
@@ -150,6 +151,9 @@ def senedmailindividual():
 @app.route('/GetBusinessReportAllDate',methods=['GET'])     
 def reportalldate():
    return getbusinessreportalldate(request)
+@app.route('/SendSms',methods=['GET'])     
+def sms():
+   return sendsms(request)
 
 
 
