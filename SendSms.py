@@ -3,7 +3,7 @@ import json
 import psycopg2
 from flask import Flask,request,jsonify
 app = Flask(__name__)
-@app.route('/SendSms',methods=['GET'])
+#@app.route('/SendSms',methods=['GET'])
 def sendsms(request):
        if request.args.get('business_id') and request.args.get('message') and request.args.get('date_from') and request.args.get('date_to'):
            message = request.args['message']
@@ -24,9 +24,9 @@ def sendsms(request):
            for result in results:
                for i in result:
                   count.append(i)
-           print(count)
+           #print(count)
            for mobile in count:
-               print(mobile)
+               #print(mobile)
                url = "https://control.msg91.com/api/sendhttp.php?authkey=195833ANU0xiap5a708d1f&mobiles="+mobile+"&message="+message+"&sender=Info&route=4&country=91"
                req = urllib.request.Request(url)
                with urllib.request.urlopen(req) as response:
