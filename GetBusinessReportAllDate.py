@@ -70,7 +70,7 @@ def getbusinessreportalldate(request):
           #d[name] = e
           x +=1
      print(values)
-     return(json.dumps({"business_name":d},indent =2))    
+     return(json.dumps({"Business Group":d},indent =2))    
      con.close()    
 #if __name__ == "__main__":
     #app.run(debug=True)
