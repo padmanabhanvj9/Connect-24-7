@@ -28,3 +28,4 @@ worker: gunicorn GetBusinessReportAll.py
 worker: gunicorn GetBusinessReportIndividual.py
 worker: gunicorn SendEmailAll.py
 worker: gunicorn GetBusinessReportIndividualDate.py
+worker: gunicorn SendSms.py
