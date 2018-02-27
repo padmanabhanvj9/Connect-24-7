@@ -27,3 +27,4 @@ worker: gunicorn PushNotificationAll.py
 worker: gunicorn GetBusinessReportAll.py
 worker: gunicorn GetBusinessReportIndividual.py
 worker: gunicorn SendEmailAll.py
+worker: gunicorn GetBusinessReportIndividualDate.py
