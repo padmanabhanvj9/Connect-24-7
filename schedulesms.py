@@ -52,7 +52,7 @@ def schedulesms():
                   the_page = str(the_page)
                 
  return(json.dumps({"Message":"SMS Sent Sucessfully"},indent =2)) 
-schedule.every().day.at("23:50").do(schedulesms)
+schedule.every().day.at("19:00").do(schedulesms)
 while 1:
     schedule.run_pending()
     time.sleep(1)
