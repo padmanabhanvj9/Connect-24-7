@@ -25,7 +25,9 @@ def updatecustomerinfo(request):
         
     current_time = datetime.datetime.utcnow()+datetime.timedelta(hours=5, minutes=30)
     current_time = current_time.strftime('%H:%M')
-    Today_date = datetime.datetime.utcnow().date().strftime('%Y-%m-%d') 
+    Today_date = datetime.datetime.utcnow().date().strftime('%Y-%m-%d')
+    Tomorrow_date = datetime.datetime.utcnow().date()+ datetime.timedelta(days=1)
+    Tomorrow_date = Tomorrow_date.strftime('%Y-%m-%d')
     print(Today_date)
     business_id = request.json['business_id']
     customer_checkin_date = request.json['customer_checkin_date']
@@ -51,7 +53,7 @@ def updatecustomerinfo(request):
     print(business_end_time)
     print( b_type)
     if b_type in ['token']:
-      if customer_appointment_date != Today_date:
+      if customer_appointment_date > Tomorrow_date:
           return (json.dumps({'Status': 'Success', 'StatusCode': '200','Message':"Token can't be generated other than today"}, sort_keys=True, indent=4)) 
       if business_end_time <= current_time :
           return (json.dumps({'Status': 'Success', 'StatusCode': '200','Message':'AOH'}, sort_keys=True, indent=4))
