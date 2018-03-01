@@ -41,8 +41,22 @@ def schedulesms():
             pass
         else:       
                smssend.append(mobile)
-               print(smssend)               
-               message = "appointment confirmed"
+               print(smssend)
+               print("sms sent")
+
+                
+ return(json.dumps({"Message":"SMS Sent Sucessfully"},indent =2)) 
+schedule.every(3).seconds.do(schedulesms)
+#schedule.every().day.at("13:35").do(schedulesms)
+while 1:
+    schedule.run_pending()
+    time.sleep(1)
+   
+'''       
+#if __name__ == "__main__":
+    #app.run(debug=True)
+   #app.run(host="192.168.1.5",port=5000)
+                  message = "appointment confirmed"
                url = "https://control.msg91.com/api/sendhttp.php?authkey=195833ANU0xiap5a708d1f&mobiles="+mobile+"&message="+message+"&sender=Doctor&route=4&country=91"
                req = urllib.request.Request(url)
                with urllib.request.urlopen(req) as response:
@@ -50,14 +64,4 @@ def schedulesms():
                   the_page = the_page[1:]
                   print(the_page)
                   the_page = str(the_page)
-                
- return(json.dumps({"Message":"SMS Sent Sucessfully"},indent =2)) 
-schedule.every().day.at("13:35").do(schedulesms)
-while 1:
-    schedule.run_pending()
-    time.sleep(1)
-   
-       
-#if __name__ == "__main__":
-    #app.run(debug=True)
-   #app.run(host="192.168.1.5",port=5000)
+'''                 
