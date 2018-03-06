@@ -26,7 +26,7 @@ def callfn(sql):
            for mobile in count:
                print(mobile)
                time.sleep(2)
-               url = "https://control.msg91.com/api/sendhttp.php?authkey=195833ANU0xiap5a708d1f&mobiles="+mobile+"&message="+message+"&sender=Info&route=4&country=91"
+               url = "https://control.msg91.com/api/sendhttp.php?authkey=195833ANU0xiap5a708d1f&mobiles="+mobile+"&message="+message+"&sender=Infoit&route=4&country=91"
                req = urllib.request.Request(url)
                with urllib.request.urlopen(req) as response:
                   the_page = response.read()
