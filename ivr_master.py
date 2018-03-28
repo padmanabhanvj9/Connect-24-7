@@ -9,7 +9,7 @@ from flask import Flask,request, jsonify
 from QueryANI import queryani
 from UpdateCustomerLangSelected import updatecustomerlangselected
 from FetchExistingBookings import fetchexistingbookings
-from CancelCurrentbooking import cancelcurrentbooking
+#from CancelCurrentbooking import cancelcurrentbooking
 from FetchRoomsAvailabilityandPrice import fetchroomsavailabilityandprice
 from FetchRoomsAvailabilityandPrice import fetchpromotionalmessage
 #from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalchargesandretrieveconfirmationnumber
@@ -30,9 +30,9 @@ def LangSelected():
 @app.route('/FetchExistingBookings',methods=['GET'])
 def ExistingBookings():
    return fetchexistingbookings(request)
-@app.route('/CancelCurrentbooking',methods=['GET'])
-def Cancelbooking():
-   return cancelcurrentbooking(request)
+#@app.route('/CancelCurrentbooking',methods=['GET'])
+#def Cancelbooking():
+ #  return cancelcurrentbooking(request)
 @app.route('/FetchRoomsAvailabilityandPrice',methods=['GET'])
 def FetchRooms():
    return fetchroomsavailabilityandprice(request)
