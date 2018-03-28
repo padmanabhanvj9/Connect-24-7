@@ -14,5 +14,5 @@ def updatecustomerlangselected(request):
     d['customer_language_pref'] = lang
     result = gensql('insert','ivr_customer_profile',d)
     
-    return(result)
+    return(json.dumps({"Return":"Record Inserted Sucessfully","Return Code":"RIS"}))
 
