@@ -1,7 +1,7 @@
 import json
 from flask import Flask,request,jsonify
 from sqlwrapper import gensql
-from jsonmerge import merge
+
 def queryani(request):
     ani = request.args["ani"]
     d,e = {},{}
