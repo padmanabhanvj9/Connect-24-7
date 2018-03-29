@@ -11,9 +11,12 @@ def queryani(request):
     print(tab1)
     tab2 = (gensql('select',' ivr_room_customer_booked','*',e))
     print(tab2)
-    #tab = tab1['customer_language_pref']
-    #print(tab1)
-    tab = tab1+tab2
-    return(tab)
+    res = json.loads(tab1)
+    res = res[0]
+    lang = res["customer_language_pref"]
+    res1 = json.loads(tab2)
+    res1 = res1[0]
+    res1['customer_language_pref'] = lang
+    return(json.dumps(res1,indent=3))
 
     
