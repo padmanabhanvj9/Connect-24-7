@@ -12,7 +12,8 @@ from FetchExistingBookings import fetchexistingbookings
 #from CancelCurrentbooking import cancelcurrentbooking
 from FetchRoomsAvailabilityandPrice import fetchroomsavailabilityandprice
 from FetchRoomsAvailabilityandPrice import fetchpromotionalmessage
-#from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalchargesandretrieveconfirmationnumber
+from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalchargesandretrieveconfirmationnumber
+from UpdatedCustomerProfile import updatedcustomerprofile
 
 
 app = Flask(__name__)
@@ -20,7 +21,6 @@ app = Flask(__name__)
 @app.route("/ivr")
 def hello():
    return "Hello IVR!"
-
 @app.route('/QueryANI',methods=['GET'])
 def QueryANIinfo():
    return queryani(request)
@@ -32,19 +32,22 @@ def ExistingBookings():
    return fetchexistingbookings(request)
 #@app.route('/CancelCurrentbooking',methods=['GET'])
 #def Cancelbooking():
- #  return cancelcurrentbooking(request)
+#   return cancelcurrentbooking(request)
 @app.route('/FetchRoomsAvailabilityandPrice',methods=['GET'])
 def FetchRooms():
    return fetchroomsavailabilityandprice(request)
 @app.route('/FetchPromotionalMessage',methods=['GET'])
 def FetchPromotionalMessage():
    return fetchpromotionalmessage(request)
-#@app.route('/CalculateTotalChargesAndRetrieveConfirmationNumber',methods=['POST'])
-#def CalculateTotalCharges():
-#   return calculatetotalchargesandretrieveconfirmationnumber(request)
+@app.route('/CalculateTotalChargesAndRetrieveConfirmationNumber',methods=['POST'])
+def CalculateTotalCharges():
+   return calculatetotalchargesandretrieveconfirmationnumber(request)
+@app.route('/UpdatedCustomerProfile',methods=['POST'])
+def UpdatedProfile():
+   return updatedcustomerprofile(request)
 
 
 if __name__ == "__main__":
-   #app.run(debug=True)
-  app.run(host="192.168.1.15",port=5000)
+  app.run(debug=True)
+  #app.run(host="192.168.1.8",port=5000)
    
