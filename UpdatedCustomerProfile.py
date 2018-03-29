@@ -24,5 +24,5 @@ def updatedcustomerprofile(request):
     
     print(gensql('update','ivr_customer_profile',d2,d1))
     print(gensql('update','ivr_room_customer_booked',d3,d1))
-    return(json.dumps({"Return":"Record Updated Sucessfully","Return Code":"RUS","Status": "Success",
+    return(json.dumps({"Return":"Record Updated Successfully","Return Code":"RUS","Status": "Success",
                       "Status Code": "200"},indent=2))
