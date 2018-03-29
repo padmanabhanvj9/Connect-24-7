@@ -5,3 +5,6 @@ worker: gunicorn QueryANI.py
 worker: gunicorn FetchExistingBookings.py
 worker: gunicorn FetchRoomsAvailabilityandPrice.py
 worker: gunicorn UpdateCustomerLangSelected.py
+worker: gunicorn FetchPromotionalMessage.py
+worker: gunicorn CalculateTotalChargesAndRetrieveConfirmationNumber.py
+worker: gunicorn UpdatedCustomerProfile.py
