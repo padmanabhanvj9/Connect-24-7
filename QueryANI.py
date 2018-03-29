@@ -17,6 +17,9 @@ def queryani(request):
     res1 = json.loads(tab2)
     res1 = res1[0]
     res1['customer_language_pref'] = lang
-    return(json.dumps(res1,indent=3))
+    return(json.dumps({"Return":"Record Retrieved Successfully","Return Code":"RRS", "Status": "Success",
+                      "Status Code": "200", "Return Value":res1},indent=2))
+
+   
 
     
