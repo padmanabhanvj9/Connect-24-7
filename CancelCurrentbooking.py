@@ -24,7 +24,7 @@ def cancelcurrentbooking(request):
     s = {}
     s['customer_booked_status'] = "canceled" 
     print(gensql('update','ivr_room_customer_booked',s,d)) 
-    return(json.dumps({"Return":"Reservation Canceled Sucessfully","Return Code":"RCS","Status": "Success",
+    return(json.dumps({"Return":"Reservation Canceled Successfully","Return Code":"RCS","Status": "Success",
                       "Status Code": "200"},indent=2))
   
    
