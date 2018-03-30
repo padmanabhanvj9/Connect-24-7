@@ -10,3 +10,4 @@ worker: gunicorn CalculateTotalChargesAndRetrieveConfirmationNumber.py
 worker: gunicorn UpdatedCustomerProfile.py
 worker: gunicorn CancelCurrentbooking.py
 worker: gunicorn SendSMS.py
+worker: gunicorn SendEmailIVR.py
