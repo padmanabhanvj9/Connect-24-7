@@ -31,7 +31,7 @@ def cancelcurrentbooking(request):
     room_count = room_count[0]
     room_count = (room_count['room_count_available'])
     print(room_count)
-    room_count -= 1 
+    room_count += 1 
     print(room_count)
     s1['room_count_available'] = room_count
     print(gensql('update','ivr_room_availability_rate',s1,r))
