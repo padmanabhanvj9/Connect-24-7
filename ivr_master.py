@@ -1,8 +1,6 @@
 '''
-
 This is the master file for all the Web services
 related to IVR application
-
 '''
 import json
 from flask import Flask,request, jsonify
@@ -14,7 +12,7 @@ from FetchRoomsAvailabilityandPrice import fetchroomsavailabilityandprice
 from FetchRoomsAvailabilityandPrice import fetchpromotionalmessage
 from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalchargesandretrieveconfirmationnumber
 from UpdatedCustomerProfile import updatedcustomerprofile
-
+from SendSMS import sendsms
 
 app = Flask(__name__)
 
@@ -45,9 +43,13 @@ def CalculateTotalCharges():
 @app.route('/UpdatedCustomerProfile',methods=['POST'])
 def UpdatedProfile():
    return updatedcustomerprofile(request)
-
+@app.route('/SendSMS',methods=['POST'])
+def SMS():
+   return sendsms(request)
 
 if __name__ == "__main__":
   app.run(debug=True)
-  #app.run(host="192.168.1.8",port=5000)
+  #app.run(host="192.168.1.6",port=5000)
+   
+
    
