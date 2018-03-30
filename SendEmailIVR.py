@@ -58,4 +58,4 @@ def sendemailivr(request):
      server.sendmail(sender,receiver,text)
      print ("the message has been sent successfully")
      server.quit()
-     return(json.dumps({'Message': 'Message Send Successfully'}, sort_keys=True, indent=4))
+     return(json.dumps({'Return': 'Message Send Successfully',"Return Code":"MSS","Status": "Success","Status Code": "200"}, sort_keys=True, indent=4))
