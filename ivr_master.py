@@ -13,12 +13,13 @@ from FetchRoomsAvailabilityandPrice import fetchpromotionalmessage
 from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalchargesandretrieveconfirmationnumber
 from UpdatedCustomerProfile import updatedcustomerprofile
 from SendSMS import sendsms
+from SendEmailIVR import sendemailivr
 
 app = Flask(__name__)
 
-@app.route("/ivr")
+@app.route("/")
 def hello():
-   return "Hello IVR!"
+   return "Welcome to IVR!"
 @app.route('/QueryANI',methods=['GET'])
 def QueryANIinfo():
    return queryani(request)
@@ -46,10 +47,11 @@ def UpdatedProfile():
 @app.route('/SendSMS',methods=['POST'])
 def SMS():
    return sendsms(request)
+@app.route('/SendEmailIVR',methods=['POST'])
+def Email():
+   return sendemailivr(request)
 
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.6",port=5000)
-   
-
    
