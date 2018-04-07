@@ -11,3 +11,4 @@ worker: gunicorn UpdatedCustomerProfile.py
 worker: gunicorn CancelCurrentbooking.py
 worker: gunicorn SendSMS.py
 worker: gunicorn SendEmailIVR.py
+worker: gunicorn SendEmailIVRTEST.py
