@@ -4,6 +4,7 @@ related to IVR application
 '''
 import json
 from flask import Flask,request, jsonify
+from QueryANITEST import queryanitest
 from QueryANI import queryani
 from UpdateCustomerLangSelected import updatecustomerlangselected
 from FetchExistingBookings import fetchexistingbookings
@@ -20,6 +21,10 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
    return "Welcome to IVR!"
+@app.route('/QueryANI/test',methods=['GET'])
+def QueryANITest():
+   return queryanitest(request)
+
 @app.route('/QueryANI',methods=['GET'])
 def QueryANIinfo():
    return queryani(request)
@@ -53,5 +58,5 @@ def Email():
 
 if __name__ == "__main__":
   app.run(debug=True)
-  #app.run(host="192.168.1.6",port=5000)
+  #app.run(host="192.168.1.10",port=5000)
    
