@@ -31,13 +31,13 @@ def QueryANIinfo():
 @app.route('/UpdateCustomerLangSelected',methods=['GET'])
 def LangSelected():
    return updatecustomerlangselected(request)
-@app.route('/FetchExistingBookings',methods=['GET','POST'])
+@app.route('/FetchExistingBookings',methods=['GET'])
 def ExistingBookings():
    return fetchexistingbookings(request)
 @app.route('/CancelCurrentbooking',methods=['GET'])
 def Cancelbooking():
    return cancelcurrentbooking(request)
-@app.route('/FetchRoomsAvailabilityandPrice',methods=['GET'])
+@app.route('/FetchRoomsAvailabilityandPrice',methods=['GET','POST'])
 def FetchRooms():
    return fetchroomsavailabilityandprice(request)
 @app.route('/FetchPromotionalMessage',methods=['GET'])
