@@ -6,8 +6,8 @@ def fetchroomsavailabilityandprice(request):
        b_id = request.json
        result = gensql('select','ivr_room_availability_rate','*',b_id)
        result = json.loads(result)
-       return(json.dumps({"Return":"Record Retrieved Successfully","Return Code":"RRS", "Status": "Success",
-                      "Status Code": "200", "Return Value":result},indent=2))
+       return(json.dumps({"ServiceStatus": "Success",
+                      "ServiceMessage": "Success", "Return Value":result},indent=2))
     else:
       result = dbget('select * from ivr_room_availability_rate')
       result = json.loads(result)
