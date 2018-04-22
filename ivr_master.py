@@ -15,6 +15,9 @@ from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalcha
 from UpdatedCustomerProfile import updatedcustomerprofile
 from SendSMS import sendsms
 from SendEmailIVR import sendemailivr
+##extranet
+from SignupExtranet import signup
+from LoginExtranet import login
 
 app = Flask(__name__)
 
@@ -55,6 +58,14 @@ def SMS():
 @app.route('/SendEmailIVR',methods=['POST'])
 def Email():
    return sendemailivr(request)
+##extranet
+@app.route('/SignupExtranet',methods=['POST'])
+def Signup():
+   return signup(request)
+
+@app.route('/LoginExtranet',methods=['POST'])
+def Login():
+   return login(request)
 
 if __name__ == "__main__":
   app.run(debug=True)
