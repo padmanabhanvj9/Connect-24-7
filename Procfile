@@ -12,3 +12,6 @@ worker: gunicorn CancelCurrentbooking.py
 worker: gunicorn SendSMS.py
 worker: gunicorn SendEmailIVR.py
 worker: gunicorn SendEmailIVRTEST.py
+worker: gunicorn LoginExtranet.py
+worker: gunicorn SignupExtranet.py
+
