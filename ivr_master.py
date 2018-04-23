@@ -18,6 +18,7 @@ from SendEmailIVR import sendemailivr
 ##extranet
 from SignupExtranet import signup
 from LoginExtranet import login
+from RatesandAvailability import ratesandavailability
 
 app = Flask(__name__)
 
@@ -62,11 +63,12 @@ def Email():
 @app.route('/SignupExtranet',methods=['POST'])
 def Signup():
    return signup(request)
-
 @app.route('/LoginExtranet',methods=['POST'])
 def Login():
    return login(request)
-
+@app.route('/RatesandAvailability',methods=['POST'])
+def ExRatesandAvailability():
+   return ratesandavailability(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
