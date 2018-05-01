@@ -34,4 +34,4 @@ def calculatetotalchargesandretrieveconfirmationnumber(request):
     d1['room_count_available'] = room_available
     d2['room_type'] = customer_room_type
     print(gensql('update','ivr_room_availability_rate',d1,d2))
-    return(json.dumps({"Return Value":{"Total Amount":Total_amt,"currency":currency,"Confirmation Number":conf_no}},indent=2))
+    return(json.dumps({"Total Amount":Total_amt,"currency":currency,"Confirmation Number":conf_no},indent=2))
