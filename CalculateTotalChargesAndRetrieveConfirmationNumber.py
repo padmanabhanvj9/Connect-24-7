@@ -21,7 +21,7 @@ def calculatetotalchargesandretrieveconfirmationnumber(request):
     currency = res['currency']
     if room_available == 0 :
         return(json.dumps({"Return":"RoomType_Not_Available ","Return_Code":"RTNA","Status": "Success",
-                      "Status Code": "200"},indent=2))
+                      "Status_Code": "200"},indent=2))
     arrival_date = datetime.datetime.strptime(customer_arrival_date, '%Y-%m-%d')
     depature_date = datetime.datetime.strptime(customer_depature_date, '%Y-%m-%d')
     print(arrival_date,depature_date)
