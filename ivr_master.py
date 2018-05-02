@@ -18,7 +18,13 @@ from SendEmailIVR import sendemailivr
 ##extranet
 from SignupExtranet import signup
 from LoginExtranet import login
+from AvailableRoomCount import availableroomcount
+from RoomList import roomlist
 from RatesandAvailability import ratesandavailability
+from InsertRatesandAvailability import insertratesandavailability
+from UpdateRatesandAvailability import updateratesandavailability
+from AddDiscount import adddiscount
+from QueryDiscount import querydiscount
 
 app = Flask(__name__)
 
@@ -61,14 +67,32 @@ def Email():
    return sendemailivr(request)
 ##extranet
 @app.route('/SignupExtranet',methods=['POST'])
-def Signup():
+def ExSignup():
    return signup(request)
 @app.route('/LoginExtranet',methods=['POST'])
-def Login():
+def ExLogin():
    return login(request)
+@app.route('/AvailableRoomCount',methods=['POST'])
+def ExAvailableRoomCount():
+   return availableroomcount(request)
+@app.route('/RoomList',methods=['POST'])
+def ExRoomList():
+   return roomlist(request)
 @app.route('/RatesandAvailability',methods=['POST'])
 def ExRatesandAvailability():
    return ratesandavailability(request)
+@app.route('/InsertRatesandAvailability',methods=['POST'])
+def ExInsertRatesandAvailability():
+   return insertratesandavailability(request)
+@app.route('/UpdateRatesandAvailability',methods=['POST'])
+def ExUpdateRatesandAvailability():
+   return updateratesandavailability(request)
+@app.route('/AddDiscount',methods=['POST'])
+def Discount():
+   return adddiscount(request)
+@app.route('/QueryDiscount',methods=['POST'])
+def QueryDiscount():
+   return querydiscount(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
