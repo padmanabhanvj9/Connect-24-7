@@ -18,8 +18,8 @@ def queryani(request):
     res1 = res1[0]
     res1['customer_language_pref'] = lang
     print(res1,type(res1))
-    dict1 = {"Return":"Record Retrieved Successfully","Return Code":"RRS", "Status": "Success",
-                      "Status Code": "200"}
+    dict1 = {"Return":"Record Retrieved Successfully","Return_Code":"RRS", "Status": "Success",
+                      "Status_Code": "200"}
     print(dict1,type(dict1))
     dict1.update(res1)
     print(dict1)
