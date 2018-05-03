@@ -4,6 +4,7 @@ related to IVR application
 '''
 import json
 from flask import Flask,request, jsonify
+from flask_cors import CORS
 from QueryANITEST import queryanitest
 from QueryANI import queryani
 from UpdateCustomerLangSelected import updatecustomerlangselected
@@ -26,7 +27,9 @@ from UpdateRatesandAvailability import updateratesandavailability
 from AddDiscount import adddiscount
 from QueryDiscount import querydiscount
 
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def hello():
