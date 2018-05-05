@@ -21,5 +21,5 @@ worker: gunicorn InsertRatesandAvailability.py
 worker: gunicorn UpdateRatesandAvailability.py
 worker: gunicorn AddDiscount.py
 worker: gunicorn QueryDiscount.py
-
+worker: gunicorn CheckDate.py
 
