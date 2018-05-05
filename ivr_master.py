@@ -26,6 +26,8 @@ from InsertRatesandAvailability import insertratesandavailability
 from UpdateRatesandAvailability import updateratesandavailability
 from AddDiscount import adddiscount
 from QueryDiscount import querydiscount
+#add
+from CheckDate import validationivr
 
 
 app = Flask(__name__)
@@ -96,6 +98,10 @@ def Discount():
 @app.route('/QueryDiscount',methods=['POST'])
 def QueryDiscount():
    return querydiscount(request)
+#add
+@app.route('/ValidationIVR',methods=['POST'])
+def CheckDate():
+   return validationivr(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
