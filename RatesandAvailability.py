@@ -42,13 +42,13 @@ def ratesandavailability(request):
         if i in date:
               n = date.index(i)
               #print(n)
-              d = {"Month": i.strftime('%B'),"Date":i.strftime('%d'),"Day":i.strftime("%A"),
+              d = {"Month": i.strftime('%B'),"Date":i.strftime('%d'),"Day":i.strftime("%A")[0:3],
                 "Price":res[n]["room_rate"],
                 "Available_Room_Count":res[n]["available_count"],
                 "Room_Status":"Declared"}
               #print(d)
         else:
-             d = {"Month": i.strftime('%B'),"Date":i.strftime('%d'),"Day":i.strftime("%A"),
+             d = {"Month": i.strftime('%B'),"Date":i.strftime('%d'),"Day":i.strftime("%A")[0:3],
                 "Price":"",
                 "Available_Room_Count":"",
                 "Room_Status":"NotDeclared"}
