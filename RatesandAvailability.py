@@ -17,7 +17,7 @@ def ratesandavailability(request):
                
     business_id = request.json['business_id']
     room_type = request.json['room_type']
-    room_name = request.json['room_name']
+    #room_name = request.json['room_name']
     date_list = []
     str_date = ''
     while from_date <= to_date:
