@@ -9,6 +9,24 @@ def calculatetotalchargesandretrieveconfirmationnumber(request):
     customer_depature_date = request.json["customer_depature_date"]
     customer_room_type = request.json["customer_room_type"]
     d,e,d1,d2 = {},[],{},{}
+    print(customer_arrival_date,customer_depature_date)
+    today_date = datetime.datetime.utcnow().date()
+    year = str(today_date.year)
+    if int(customer_arrival_date[2:]) == today_date.month :
+        if int(customer_arrival_date[0:2]) < today_date.day :
+           year = str(today_date.year+1)
+           print("year",year,type(year))
+    elif int(customer_arrival_date[2:]) < today_date.month :
+        year = str(today_date.year+1)
+    customer_arrival_date = year+'-'+customer_arrival_date[2:]+'-'+customer_arrival_date[0:2]
+    if int(customer_depature_date[2:]) == today_date.month :
+        if int(customer_depature_date[0:2]) < today_date.day :
+           year = str(today_date.year+1)
+           print("year",year,type(year))
+    elif int(customer_depature_date[2:]) < today_date.month :
+        year = str(today_date.year+1)
+    customer_depature_date = year+'-'+customer_depature_date[2:]+'-'+customer_depature_date[0:2]
+    print(customer_arrival_date,customer_depature_date)    
     e = ['room_count_available','room_rate','currency']
     d['room_type'] =  customer_room_type
     result = (gensql('select','ivr_room_availability_rate',e,d))
