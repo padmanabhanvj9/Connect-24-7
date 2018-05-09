@@ -8,7 +8,7 @@ def sendemail(request):
      email = "infocuit.banupriya@gmail.com"
      message = request.json['message']
      
-     sender = "infocuit.raja@gmail.com"
+     sender = "siva.infocuit@gmail.com"
      receiver = email
      print(sender,type(sender),receiver,type(receiver))
      #message = request.json['message']
