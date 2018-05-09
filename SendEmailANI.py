@@ -12,8 +12,8 @@ def sendemailiani(request):
      print(car1)
      r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
      re = r.json()
-     print(r.json())
-     print ("Content type : ", r.headers["Content-Type"]) 
+     
+     
      print(re)
      name = re['customer_name']
      email = "infocuit.banupriya@gmail.com"
