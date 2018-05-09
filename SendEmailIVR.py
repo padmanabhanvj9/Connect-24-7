@@ -13,7 +13,7 @@ def sendemailivr(request):
      depature = request.json['depature']
      room_type = request.json['room_type']
      
-     sender = "infocuit.raja@gmail.com"
+     sender = "siva.infocuit@gmail.com"
      receiver = email
      print(sender,type(sender),receiver,type(receiver))
      #message = request.json['message']
@@ -49,8 +49,8 @@ def sendemailivr(request):
      #msg.attach(MIMEText(msg['subject'],'plain'))
      msg.attach(MIMEText(html,'html'))
      
-     gmailuser = 'infocuit.raja@gmail.com'
-     password = 'P@#11word'
+     gmailuser = 'siva.infocuit@gmail.com'
+     password = 'P@s$w0rds$'
      server = smtplib.SMTP('smtp.gmail.com',587)
      server.starttls()
      server.login(gmailuser,password)
