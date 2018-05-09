@@ -2,7 +2,7 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from botocore.vendored import requests
+import requests
 def sendemailiani(request):
      
      conf_no = request.json['conf_no']
