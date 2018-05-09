@@ -9,6 +9,7 @@ def updatedcustomerprofile(request):
     customer_email = "infocuit.daisy@gmail.com"
     customer_cc = request.json['customer_cc']
     customer_expirydate = request.json['customer_expirydate']
+    customer_expirydate = customer_expirydate[0:2]+'/'+customer_expirydate[2:]
     
     customer_room_type = request.json['customer_room_type']
     customer_pickup_drop = request.json['customer_pickup_drop']
