@@ -46,7 +46,7 @@ def QueryANIinfo():
 @app.route('/UpdateCustomerLangSelected',methods=['GET'])
 def LangSelected():
    return updatecustomerlangselected(request)
-@app.route('/FetchExistingBookings',methods=['GET'])
+@app.route('/FetchExistingBookings',methods=['GET','POST'])
 def ExistingBookings():
    return fetchexistingbookings(request)
 @app.route('/CancelCurrentbooking',methods=['GET'])
