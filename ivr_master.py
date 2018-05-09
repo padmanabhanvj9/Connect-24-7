@@ -28,6 +28,7 @@ from AddDiscount import adddiscount
 from QueryDiscount import querydiscount
 #add
 from CheckDate import validationivr
+from SendEmail import sendemail
 
 
 app = Flask(__name__)
@@ -102,6 +103,9 @@ def QueryDiscount():
 @app.route('/ValidationIVR',methods=['POST'])
 def CheckDate():
    return validationivr(request)
+@app.route('/SendEmail',methods=['POST'])
+def  sendemailmessage():
+   return sendemail(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
