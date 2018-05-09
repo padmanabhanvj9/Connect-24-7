@@ -3,8 +3,8 @@ from flask import Flask,request,jsonify
 from sqlwrapper import gensql
 
 def queryani(request):
-    #ani = request.args["ani"]
-    ani = request.json['ani']
+    ani = request.args["ani"]
+    #ani = request.json['ani']
     d,e = {},{}
     d['customer_ani'] = ani
     e['customer_mobile'] = ani
