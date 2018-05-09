@@ -107,7 +107,7 @@ def CheckDate():
 def  sendemailmessage():
    return sendemail(request)
 @app.route('/SendEmailANI',methods=['POST'])
-def sendani():
+def sendanimessage():
    return sendemailiani(request)
 if __name__ == "__main__":
   app.run(debug=True)
