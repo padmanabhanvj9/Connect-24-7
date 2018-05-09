@@ -40,7 +40,7 @@ def hello():
 def QueryANITest():
    return queryanitest(request)
 
-@app.route('/QueryANI',methods=['GET'])
+@app.route('/QueryANI',methods=['GET','POST'])
 def QueryANIinfo():
    return queryani(request)
 @app.route('/UpdateCustomerLangSelected',methods=['GET'])
