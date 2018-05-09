@@ -22,6 +22,8 @@ def updatedcustomerprofile(request):
     d2['customer_email'] = customer_email
     d2['customer_cc'] = customer_cc
     d2['customer_expirydate'] = customer_expirydate
+    d3['customer_expirydate'] = customer_expirydate
+    d3['customer_cc'] = customer_cc
     d3['customer_room_type'] = customer_room_type
     d3['customer_pickup_drop'] = customer_pickup_drop
     d3['customer_adultsm'] = adults
