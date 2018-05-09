@@ -14,6 +14,7 @@ def fetchroomsavailabilityandprice(request):
             f_res["room_count_available"+""+str(result.index(res))+""] = res['room_count_available']
             f_res["room_rate"+""+str(result.index(res))+""] = res['room_rate']
             f_res["currency"+""+str(result.index(res))+""] = res['currency']
+            f_res["room_type"+""+str(result.index(res))+""] = res['room_type']
         #return(json.dumps({"Return":"Record Retrieved Successfully","Return Code":"RRS", "Status": "Success",
         #                  "Status Code": "200", "Return Value":result},indent=2))
         f_res["count"] = len(result)
