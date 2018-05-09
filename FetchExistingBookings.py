@@ -4,7 +4,8 @@ import datetime
 #from datetime import datetime
 def fetchexistingbookings(request):
     today_date = datetime.datetime.utcnow().date()
-    no = request.args["conf_no"]
+    #no = request.args["conf_no"]
+    no = request.json['conf_no']
     d = {}
     d['customer_confirmation_number'] = no
     result = (gensql('select','ivr_room_customer_booked','*',d))
