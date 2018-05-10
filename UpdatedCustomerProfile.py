@@ -17,7 +17,7 @@ def updatedcustomerprofile(request):
     adults = request.json['adults']
     child = request.json['child']
     d1,d2,d3 = {},{},{}
-    d1['customer_name'] = customer_name
+    #d1['customer_name'] = customer_name
     d1['customer_mobile'] = customer_mobile
     d2['customer_email'] = customer_email
     d2['customer_cc'] = customer_cc
