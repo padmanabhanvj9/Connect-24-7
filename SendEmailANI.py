@@ -3,25 +3,15 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-def callexternalapi(request):
-     #conf_no = request.json['conf_no']
-     #conf_no = request.json['conf_no']
-     #print(conf_no)
-     phone = request.json['mobile']
-     car1={"mobile":phone}
-     #car1 = {"conf_no":conf_no}
-     print(car1)
-     r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
-     re = r.json()
-     print(type(re))
-     name = re['customer_name']
-     email = "infocuit.banupriya@gmail.com"
-     message = "Booking Confirmed"
-     conf_no = re['customer_confirmation_number']
-     hotel_name = "SMARTMO"
-     arrival = re['customer_arrival_date']
-     depature = re['customer_depature_date']
-     room_type = re['customer_room_type']
+def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type):
+     name = name
+     email = email
+     message = message
+     conf_no = conf_no
+     hotel_name = hotel_name
+     arrival = arrival
+     depature = depature
+     room_type = room_type
      print(name,email,message,conf_no,hotel_name,arrival)
      sender = "siva.infocuit@gmail.com"
      receiver = email
@@ -70,3 +60,27 @@ def callexternalapi(request):
      server.quit()
      return(json.dumps({'Return': 'Message Send Successfully',"Return_Code":"MSS","Status": "Success","Status_Code": "200"}, sort_keys=True, indent=4))
 
+
+
+def callexternalapi(request):
+     #conf_no = request.json['conf_no']
+     #conf_no = request.json['conf_no']
+     #print(conf_no)
+     phone = request.json['mobile']
+     car1={"mobile":phone}
+     #car1 = {"conf_no":conf_no}
+     print(car1)
+     r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
+     re = r.json()
+     res = r.raw
+     print(res)
+     print(type(re))
+     name = re['customer_name']
+     email = "infocuit.banupriya@gmail.com"
+     message = "Booking Confirmed"
+     conf_no = re['customer_confirmation_number']
+     hotel_name = "SMARTMO"
+     arrival = re['customer_arrival_date']
+     depature = re['customer_depature_date']
+     room_type = re['customer_room_type']
+     return sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type)
