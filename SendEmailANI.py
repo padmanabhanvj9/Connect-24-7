@@ -4,10 +4,10 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 def callexternalapi(request):
-     #conf_no = request.json['conf_no']
-     conf_no = request.json['conf_no']
-     print(conf_no)
-     car1 = {"conf_no":conf_no}
+     phone = request.json['mobile']
+     car1={"mobile":phone}
+     #print(conf_no)
+     #car1 = {"conf_no":conf_no}
      print(car1)
      r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
      re = r.json()
