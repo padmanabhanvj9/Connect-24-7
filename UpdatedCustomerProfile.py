@@ -2,7 +2,7 @@ import json
 from sqlwrapper import gensql
 
 def updatedcustomerprofile(request):
-    customer_name = request.json['customer_name']
+    #customer_name = request.json['customer_name']
     customer_mobile = request.json['customer_mobile']
     
     #customer_email = request.json['customer_email']
