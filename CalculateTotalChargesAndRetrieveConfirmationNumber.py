@@ -4,8 +4,12 @@ import random
 import datetime
 def calculatetotalchargesandretrieveconfirmationnumber(request):
     a = request.json
-    l = { k : v for k,v in a.items() if k in ('customer_name','customer_mobile','customer_room_type')}
-    customer_name = request.json["customer_name"]
+    l = { k : v for k,v in a.items() if k in ('customer_mobile','customer_room_type')}
+    if request.args.get('business_id'): 
+       customer_name = request.json["customer_name"]
+    else:
+       customer_name  = "Null"
+    l['customer_name'] = customer_name  
     customer_mobile = request.json["customer_mobile"]        
     customer_arrival_date = request.json["customer_arrival_date"]
     customer_depature_date = request.json["customer_depature_date"]
