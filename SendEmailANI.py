@@ -1,17 +1,16 @@
+import requests
 import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import requests
-def sendemailiani(request):
-     
-     conf_no = request.json['conf_no']
+def callexternalapi():
+     #conf_no = request.json['conf_no']
+     conf_no = "848910408112345"
      print(conf_no)
      car1 = {"conf_no":conf_no}
      print(car1)
      r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
      re = r.json()
-  
      print(re)
      name = re['customer_name']
      email = "infocuit.banupriya@gmail.com"
@@ -21,7 +20,7 @@ def sendemailiani(request):
      arrival = re['customer_arrival_date']
      depature = re['customer_depature_date']
      room_type = re['customer_room_type']
-     
+     print(name,email,message,conf_no,hotel_name,arrival)
      sender = "siva.infocuit@gmail.com"
      receiver = email
      print(sender,type(sender),receiver,type(receiver))
@@ -68,3 +67,4 @@ def sendemailiani(request):
      print ("the message has been sent successfully")
      server.quit()
      return(json.dumps({'Return': 'Message Send Successfully',"Return_Code":"MSS","Status": "Success","Status_Code": "200"}, sort_keys=True, indent=4))
+callexternalapi()
