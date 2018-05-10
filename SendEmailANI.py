@@ -3,9 +3,9 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-def callexternalapi():
+def callexternalapi(request):
      #conf_no = request.json['conf_no']
-     conf_no = "848910408112345"
+     conf_no = request.json['conf_no']
      print(conf_no)
      car1 = {"conf_no":conf_no}
      print(car1)
@@ -67,4 +67,4 @@ def callexternalapi():
      print ("the message has been sent successfully")
      server.quit()
      return(json.dumps({'Return': 'Message Send Successfully',"Return_Code":"MSS","Status": "Success","Status_Code": "200"}, sort_keys=True, indent=4))
-callexternalapi()
+
