@@ -29,7 +29,7 @@ from QueryDiscount import querydiscount
 #add
 from CheckDate import validationivr
 from SendEmail import sendemail
-from SendEmailANI import sendemailiani
+from SendEmailANI import callexternalapi
 
 app = Flask(__name__)
 CORS(app)
@@ -108,7 +108,7 @@ def  sendemailmessage():
    return sendemail(request)
 @app.route('/SendEmailANI',methods=['POST'])
 def sendanimessage():
-   return sendemailiani(request)
+   return callexternalapi(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
