@@ -1,6 +1,6 @@
 import json
 import datetime
-from sqlwrapper import dbget,dbput
+from sqlwrapper import gensql,dbget,dbput
 def ratesinsertandupdate(request):
     d = request.json
     e = { k : v for k,v in d.items() if k in ('business_id','room_type')}
