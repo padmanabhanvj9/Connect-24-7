@@ -30,6 +30,8 @@ from QueryDiscount import querydiscount
 from CheckDate import validationivr
 from SendEmail import sendemail
 from SendEmailANI import callexternalapi
+from InsertRatesandAvailability import insertratesandavailability
+
 
 app = Flask(__name__)
 CORS(app)
@@ -109,6 +111,9 @@ def  sendemailmessage():
 @app.route('/SendEmailANI',methods=['POST'])
 def sendanimessage():
    return callexternalapi(request)
+@app.route('/RatesInsertAndUpdate',methods=['POST'])
+def RatesInsertAndUpdate():
+   return ratesinsertandupdate(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
