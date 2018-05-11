@@ -4,15 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type):
-     name = name
-     email = email
-     message = message
-     conf_no = conf_no
-     hotel_name = hotel_name
-     arrival = arrival
-     depature = depature
-     room_type = room_type
-     print(name,email,message,conf_no,hotel_name,arrival)
+     print(name,email,message,conf_no,hotel_name,arrival,depature, room_type)
      sender = "siva.infocuit@gmail.com"
      receiver = email
      print(sender,type(sender),receiver,type(receiver))
@@ -38,7 +30,7 @@ def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_typ
         <p><font size="2" color="black">Arrival Date:"""+ arrival+"""</font></p>
         <p><font size="2" color="black">Depature Date0:"""+ depature+"""</font></p>
         <p><font size="2" color="black">Room Type:"""+ room_type+"""</font></p>
-        <p><font size="4" color="blue">  -"""+  hotel_name+"""</font></p>
+        <p><font size="4" color="blue">Hotel Name:"""+hotel_name+"""</font></p>
         
         </dl>
 
@@ -72,8 +64,7 @@ def callexternalapi(request):
      print(car1)
      r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
      re = r.json()
-     res = r.raw
-     print(res)
+     
      print(type(re))
      name = re['customer_name']
      email = "infocuit.banupriya@gmail.com"
@@ -83,4 +74,5 @@ def callexternalapi(request):
      arrival = re['customer_arrival_date']
      depature = re['customer_depature_date']
      room_type = re['customer_room_type']
+     
      return sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type)
