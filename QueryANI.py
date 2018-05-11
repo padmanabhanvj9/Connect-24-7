@@ -3,8 +3,8 @@ from flask import Flask,request,jsonify
 from sqlwrapper import gensql
 
 def queryani(request):
+  try:
     ani = request.args["ani"]
-    #ani = request.json['ani']
     d,e = {},{}
     d['customer_ani'] = ani
     e['customer_mobile'] = ani
@@ -25,7 +25,7 @@ def queryani(request):
     dict1.update(res1)
     print(dict1)
     return(json.dumps(dict1))
-
-   
+  except:
+    return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Failure"},indent=2))
 
     
