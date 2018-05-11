@@ -30,7 +30,7 @@ from QueryDiscount import querydiscount
 from CheckDate import validationivr
 from SendEmail import sendemail
 from SendEmailANI import callexternalapi
-from InsertRatesandAvailability import insertratesandavailability
+from RatesInsertAndUpdate import ratesinsertandupdate
 
 
 app = Flask(__name__)
