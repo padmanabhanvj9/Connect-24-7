@@ -64,7 +64,7 @@ def callexternalapi(request):
      print(car1)
      r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
      re = r.json()
-     
+     print(re)
      print(type(re))
      name = re['customer_name']
      email = "infocuit.banupriya@gmail.com"
