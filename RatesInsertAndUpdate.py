@@ -13,17 +13,11 @@ def ratesinsertandupdate(request):
       sql = json.loads(dbget("select count(*) from extranet_availableroom where id = '"+str(res[0]['id'])+"'\
                              and room_date = '"+i['date']+"' "))
       print(sql[0]['count'])
-      if sql[0]['count'] == 0:
-	 if  i['Available_Room_Count'] == "" or i['Price'] == "":
-             i['Available_Room_Count'] = 0
-             i['Price'] = 0	
+      if sql[0]['count'] == 0:	
          dbput("INSERT INTO public.extranet_availableroom(\
 	        id, room_date, available_count, room_rate)\
 	        VALUES ("+str(res[0]['id'])+", '"+i['date']+"', "+str(i['Available_Room_Count'])+", "+str(i['Price'])+")")
       else:
-	 if  i['Available_Room_Count'] == "" or i['Price'] == "":
-             i['Available_Room_Count'] = 0
-             i['Price'] = 0
          dbput("UPDATE public.extranet_availableroom\
 	        set available_count="+str(i['Available_Room_Count'])+", room_rate="+str(i['Price'])+"\
 	        WHERE  id="+str(res[0]['id'])+" and room_date='"+i['date']+"'") 
