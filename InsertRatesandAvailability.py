@@ -1,7 +1,7 @@
 import json
 import datetime
 from sqlwrapper import gensql,dbget,dbput
-def ratesinsertandupdate(request):
+def insertratesandavailability(request):
     d = request.json
     e = { k : v for k,v in d.items() if k in ('business_id','room_type')}
     f = { k : v for k,v in d.items() if k in ('rooms')}
