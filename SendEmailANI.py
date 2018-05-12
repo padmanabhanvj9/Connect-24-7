@@ -24,7 +24,7 @@ def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_typ
       <body>
         <dl>
         <dt>
-        <p><font size="2" color="black">hi,"""+name+"""</font></p>
+        <p><font size="2" color="black">Dear,"""+name+"""</font></p>
         <p><font size="4" color="blue">"""+message+"""</font></p>
   
         <p><font size="2" color="black">Confirmation Number:"""+ conf_no+"""</font></p>
