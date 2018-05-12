@@ -57,6 +57,7 @@ def calculatetotalchargesandretrieveconfirmationnumber(request):
     print(Total_amt,type(Total_amt))
     conf_no = (random.randint(1000000000,9999999999))
     room_available -= 1
+    l['customer_confirmation_number'] = conf_no
     d1['room_count_available'] = room_available
     d2['room_type'] = customer_room_type
     print(gensql('update','ivr_room_availability_rate',d1,d2))
