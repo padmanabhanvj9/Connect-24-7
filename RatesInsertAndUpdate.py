@@ -16,10 +16,10 @@ def ratesinsertandupdate(request):
       if sql[0]['count'] == 0:
          dbput("INSERT INTO public.extranet_availableroom(\
 	        id, room_date, available_count, room_rate)\
-	        VALUES ("+str(res[0]['id'])+", '"+i['date']+"', "+i['Available_Room_Count']+", "+i['Price']+")")
+	        VALUES ("+str(res[0]['id'])+", '"+i['date']+"', "+str(i['Available_Room_Count'])+", "+str(i['Price'])+")")
       else:
          dbput("UPDATE public.extranet_availableroom\
-	        set available_count="+i['Available_Room_Count']+", room_rate="+i['Price']+"\
+	        set available_count="+str(i['Available_Room_Count'])+", room_rate="+str(i['Price'])+"\
 	        WHERE  id="+str(res[0]['id'])+" and room_date='"+i['date']+"'") 
            
          print(i['date'])    
