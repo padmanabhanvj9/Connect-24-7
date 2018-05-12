@@ -8,7 +8,7 @@ def calculatetotalchargesandretrieveconfirmationnumber(request):
     if request.args.get('business_id'): 
        customer_name = request.json["customer_name"]
     else:
-       customer_name  = "Null"
+       customer_name  = "Customer"
     l['customer_name'] = customer_name   
     customer_mobile = request.json["customer_mobile"]        
     customer_arrival_date = request.json["customer_arrival_date"]
