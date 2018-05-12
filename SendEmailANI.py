@@ -1,11 +1,12 @@
 import requests
 import json
 import smtplib
+from sqlwrapper import gensql
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type):
      print(name,email,message,conf_no,hotel_name,arrival,depature, room_type)
-     sender = "siva.infocuit@gmail.com"
+     sender = "infocuit.testing@gmail.com"
      receiver = email
      print(sender,type(sender),receiver,type(receiver))
      #message = request.json['message']
@@ -41,8 +42,8 @@ def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_typ
      #msg.attach(MIMEText(msg['subject'],'plain'))
      msg.attach(MIMEText(html,'html'))
      
-     gmailuser = 'siva.infocuit@gmail.com'
-     password = 'P@s$w0rds$'
+     gmailuser = 'infocuit.testing@gmail.com'
+     password = 'infocuit@123'
      server = smtplib.SMTP('smtp.gmail.com',587)
      server.starttls()
      server.login(gmailuser,password)
@@ -59,12 +60,18 @@ def callexternalapi(request):
      #conf_no = request.json['conf_no']
      #print(conf_no)
      phone = request.json['mobile']
-     car1={"mobile":phone}
-     #car1 = {"conf_no":conf_no}
-     print(car1)
-     r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
-     re = r.json()
+     d = {}
+     d['customer_mobile'] = phone
+     result = json.loads(gensql('select','ivr_room_customer_booked','*',d))
+     #result = json.loads(result)
+     re = result[0]
      print(re)
+     #car1={"mobile":phone}
+     #car1 = {"conf_no":conf_no}
+     #print(car1)
+     #r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
+     #re = r.json()
+     
      print(type(re))
      name = re['customer_name']
      email = "infocuit.banupriya@gmail.com"
