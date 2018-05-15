@@ -59,7 +59,7 @@ def fetchroomsavailabilityandprice(request):
 def fetchpromotionalmessage(request):
     try: 
         today_date = datetime.datetime.utcnow().date()
-        no = request.json['no']
+        no = request.json['TFN']
         #print(no)
         b_id = json.loads(dbget("select id from ivr_dialed_number where dialed_number='"+no+"' "))
         print(b_id[0]['id'])
