@@ -58,7 +58,7 @@ def Cancelbooking():
 @app.route('/FetchRoomsAvailabilityandPrice',methods=['GET','POST'])
 def FetchRooms():
    return fetchroomsavailabilityandprice(request)
-@app.route('/FetchPromotionalMessage',methods=['GET'])
+@app.route('/FetchPromotionalMessage',methods=['GET','POST'])
 def FetchPromotionalMessage():
    return fetchpromotionalmessage(request)
 @app.route('/CalculateTotalChargesAndRetrieveConfirmationNumber',methods=['POST'])
