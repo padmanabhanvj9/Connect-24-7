@@ -91,7 +91,7 @@ def fetchpromotionalmessage(request):
             result = result[0]
             #return(json.dumps({"Return":"Record Retrieved Successfully","Return Code":"RRS", "Status": "Success",
              #                 "Status Code": "200", "Return Value":result},indent=2))
-            dict1 = {"Return":"Record Retrieved Successfully","Return_Code":"RRS", "Status": "Success",
+            dict1 = {"Return":"Record Retrieved Successfully","Return_Code":"RRS", "ServiceMessage": "Success",
                               "Status_Code": "200"}
             print(dict1,type(dict1))
             dict1.update(result)
