@@ -5,7 +5,11 @@ def fetchroomsavailabilityandprice(request):
     try:
         d = request.json
         print(d)
-        print(d['business_id'])
+        tfn = request.json['TFN']
+        b_id = json.loads(dbget("select id from ivr_dialed_number where dialed_number='"+tfn+"' "))
+        print(b_id[0]['id'])
+        bi_id = json.loads(dbget("select business_id from ivr_hotel_list where id='"+str(b_id[0]['id'])+"' "))
+        print(bi_id[0]['business_id'],type(bi_id[0]['business_id']))
         customer_arrival_date = d['arival_date']
         customer_depature_date = d['depature_date']
         print(customer_arrival_date,customer_depature_date)
@@ -30,7 +34,10 @@ def fetchroomsavailabilityandprice(request):
         #print(customer_arrival_date,customer_depature_date)
         #print(d)
         res = json.loads(dbget("select available_count,room_type from extranet_availableroom join \
-                               extranet_room_list on extranet_room_list.id = extranet_availableroom.id where room_date between '"+d['customer_arrival_date']+"' and '"+d['customer_depature_date']+"'"))
+                               extranet_room_list on extranet_room_list.id = extranet_availableroom.id \
+                               where room_date between '"+d['customer_arrival_date']+"' and \
+                               '"+d['customer_depature_date']+"' \
+                               and business_id='"+bi_id[0]['business_id']+"' "))
         #print(res,type(res))
         list1,list2 = [],[]
         for i in res:
