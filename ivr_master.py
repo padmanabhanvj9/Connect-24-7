@@ -31,6 +31,8 @@ from CheckDate import validationivr
 from SendEmail import sendemail
 from SendEmailANI import callexternalapi
 from RatesInsertAndUpdate import ratesinsertandupdate
+from UpdateExistingBooking import updateexistingbooking
+from PromotionalCancelMessage import promotionalcancelmessage
 
 
 app = Flask(__name__)
@@ -114,6 +116,12 @@ def sendanimessage():
 @app.route('/RatesInsertAndUpdate',methods=['POST'])
 def RatesInsertAndUpdate():
    return ratesinsertandupdate(request)
+@app.route('/UpdateExistingBooking',methods=['POST'])
+def UpdateExistingBooking():
+   return updateexistingbooking(request)
+@app.route('/PromotionalCancelMessage',methods=['POST'])
+def PromotionalCancelMessage():
+   return promotionalcancelmessage(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
