@@ -12,7 +12,7 @@ from FetchExistingBookings import fetchexistingbookings
 from CancelCurrentbooking import cancelcurrentbooking
 from FetchRoomsAvailabilityandPrice import fetchroomsavailabilityandprice
 from FetchRoomsAvailabilityandPrice import fetchpromotionalmessage
-from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalchargesandretrieveconfirmationnumber
+from CalculateTotalChargesAndRetrieveConfirmationNumber import calculatetotalcharges
 from UpdatedCustomerProfile import updatedcustomerprofile
 from SendSMS import sendsms
 from SendEmailIVR import sendemailivr
@@ -33,6 +33,7 @@ from SendEmailANI import callexternalapi
 from RatesInsertAndUpdate import ratesinsertandupdate
 from UpdateExistingBooking import updateexistingbooking
 from PromotionalCancelMessage import promotionalcancelmessage
+from InsertCustomerRoomBooking import insertcustomerroombooking
 
 
 app = Flask(__name__)
@@ -63,9 +64,9 @@ def FetchRooms():
 @app.route('/FetchPromotionalMessage',methods=['GET','POST'])
 def FetchPromotionalMessage():
    return fetchpromotionalmessage(request)
-@app.route('/CalculateTotalChargesAndRetrieveConfirmationNumber',methods=['POST'])
+@app.route('/CalculateTotalCharges',methods=['POST'])
 def CalculateTotalCharges():
-   return calculatetotalchargesandretrieveconfirmationnumber(request)
+   return calculatetotalcharges(request)
 @app.route('/UpdatedCustomerProfile',methods=['POST'])
 def UpdatedProfile():
    return updatedcustomerprofile(request)
@@ -122,6 +123,9 @@ def UpdateExistingBooking():
 @app.route('/PromotionalCancelMessage',methods=['POST'])
 def PromotionalCancelMessage():
    return promotionalcancelmessage(request)
+@app.route('/InsertCustomerRoomBooking',methods=['POST'])
+def InsertCustomerRoomBooking():
+   return insertcustomerroombooking(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
