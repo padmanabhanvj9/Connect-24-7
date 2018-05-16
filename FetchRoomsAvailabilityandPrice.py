@@ -33,7 +33,7 @@ def fetchroomsavailabilityandprice(request):
         d['customer_depature_date'] = customer_depature_date
         #print(customer_arrival_date,customer_depature_date)
         #print(d)
-        res = json.loads(dbget("select available_count,room_type from extranet_availableroom join \
+        res = json.loads(dbget("select available_count,room_type,room_rate from extranet_availableroom join \
                                extranet_room_list on extranet_room_list.id = extranet_availableroom.id \
                                where room_date between '"+d['customer_arrival_date']+"' and \
                                '"+d['customer_depature_date']+"' \
@@ -52,10 +52,23 @@ def fetchroomsavailabilityandprice(request):
                 list1.remove(i)
         #print(list1)
         dict1 = {"count":len(list1)}
+        rate_str = ''
         for i in list1:
             #print(i,type(i))
             dict1["room_type"+""+str(list1.index(i))+""] = i[0]
-        #print(dict1)
+            if len(rate_str) !=0:
+               rate_str +=','+ "'"+i[0]+"'"
+            else:
+               rate_str += "'"+i[0]+"'"
+        #print(dict1)       
+        #print(rate_str)
+        st_rate = json.loads(dbget("select standard_rate from extranet_room_list where \
+                                    room_type in ("+rate_str+") and business_id='"+bi_id[0]['business_id']+"' "))
+        #print(st_rate,type(st_rate))
+        for data in st_rate:
+            #print(data,type(data))
+            dict1["room_rate"+""+str(st_rate.index(data))+""] = data['standard_rate']
+        print(dict1)
         dict1['ServiceStatus'] = "Success"
         dict1['ServiceMessage'] = "Success"
         return(json.dumps(dict1))
