@@ -13,7 +13,7 @@ def sendsms(request):
      depature = request.json['depature']
      room_type = request.json['room_type']
      all_message = ("Dear "+name+", "+message+".  Confirmation Number is "+conf_no+", Arrival Date: "+arrival+", Depature Date:"+depature+", Room Type:"+room_type+". by "+hotel_name+"")     
-     url = "https://control.msg91.com/api/sendhttp.php?authkey=195833ANU0xiap5a708d1f&mobiles="+phone+"&message="+all_message+"&sender=Infoit&route=4&country=91")
+     url = "https://control.msg91.com/api/sendhttp.php?authkey=195833ANU0xiap5a708d1f&mobiles="+phone+"&message="+all_message+"&sender=Infoit&route=4&country=91"
      req = urllib.request.Request(url)
      with urllib.request.urlopen(req) as response:
          the_page = response.read()
