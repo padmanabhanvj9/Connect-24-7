@@ -46,6 +46,6 @@ def insertcustomerroombooking(request):
         e['customer_booked_date'] = today_date
         e['id'] = b_id[0]['id']
         print(gensql('insert','ivr_room_customer_booked',e))
-        return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Success"}))
+        return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Success","conf_no":conf_no}))
      except:
         return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Failure"}))
