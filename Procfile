@@ -27,3 +27,4 @@ worker: gunicorn SendEmailANI.py
 worker: gunicorn InsertRatesandAvailability.py
 worker: gunicorn PromotionalCancelMessage.py
 worker: gunicorn UpdateExistingBooking.py
+worker: gunicorn InsertCustomerRoomBooking.py
