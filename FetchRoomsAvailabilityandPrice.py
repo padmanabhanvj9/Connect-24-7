@@ -33,7 +33,7 @@ def fetchroomsavailabilityandprice(request):
         d['customer_depature_date'] = customer_depature_date
         #print(customer_arrival_date,customer_depature_date)
         #print(d)
-        res = json.loads(dbget("select available_count,room_type,room_rate from extranet_availableroom join \
+        res = json.loads(dbget("select available_count,room_type from extranet_availableroom join \
                                extranet_room_list on extranet_room_list.id = extranet_availableroom.id \
                                where room_date between '"+d['customer_arrival_date']+"' and \
                                '"+d['customer_depature_date']+"' \
