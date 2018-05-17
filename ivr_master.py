@@ -35,6 +35,7 @@ from UpdateExistingBooking import updateexistingbooking
 from PromotionalCancelMessage import promotionalcancelmessage
 from InsertCustomerRoomBooking import insertcustomerroombooking
 from ValidateConfirmationNumber import validateconfirmationnumber
+from FetchBooking import fetchbooking
 
 
 app = Flask(__name__)
@@ -130,6 +131,9 @@ def InsertCustomerRoomBooking():
 @app.route('/ValidateConfirmationNumber',methods=['POST'])
 def ValidateConfirmationNumber():
    return validateconfirmationnumber(request)
+@app.route('/FetchBooking',methods=['POST'])
+def FetchBooking():
+   return fetchbooking(request)
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
