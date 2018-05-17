@@ -45,9 +45,11 @@ def calculatetotalcharges(request):
         depature_date = datetime.datetime.strptime(customer_depature_date, '%Y-%m-%d')
         #print(arrival_date,depature_date)
         night = (depature_date - arrival_date).days
+        if night == 0:
+            night = 1
         #print(night,type(night))
         Total_amt = night * room_rate
         #print(Total_amt,type(Total_amt))
-        return(json.dumps({"ServiceMessage":"Success","Total_Amount":Total_amt,"currency":currency}))
+        return(json.dumps({"ServiceMessage":"Success","Total_Amount":Total_amt,"currency":currency,"no_of_rooms":"1"}))
     except:
         return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Failure"}))
