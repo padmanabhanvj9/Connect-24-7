@@ -1,45 +1,55 @@
 import requests
 import json
 import smtplib
-from sqlwrapper import gensql
+from sqlwrapper import gensql,dbget
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type):
-     print(name,email,message,conf_no,hotel_name,arrival,depature, room_type)
+def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_date):
+     print(name,email,message,conf_no,arrival,depature, room_type)
      sender = "infocuit.testing@gmail.com"
      receiver = email
-     print(sender,type(sender),receiver,type(receiver))
-     #message = request.json['message']
-     #data = message.split("|")
-     #print(data)
+     #print(sender,type(sender),receiver,type(receiver))
      subject = "Hotel Booking"
      msg = MIMEMultipart()
      msg['from'] = sender
      msg['to'] = receiver
      msg['subject'] = subject
-     # Create the body of the message (a plain-text and an HTML version)
+     ids = id1
+     print(ids)
+     hotel_det = json.loads(dbget("select * from ivr_hotel_list where id = "+str(ids)+""))
+     print(hotel_det)
      html = """\
      <html>
-      <head></head>
-      <body>
-        <dl>
-        <dt>
-        <p><font size="2" color="black">Dear,"""+name+"""</font></p>
-        <p><font size="4" color="blue">"""+message+"""</font></p>
-  
-        <p><font size="2" color="black">Confirmation Number:"""+ conf_no+"""</font></p>
-        <p><font size="2" color="black">Arrival Date:"""+ arrival+"""</font></p>
-        <p><font size="2" color="black">Depature Date0:"""+ depature+"""</font></p>
-        <p><font size="2" color="black">Room Type:"""+ room_type+"""</font></p>
-        <p><font size="4" color="blue">Hotel Name:"""+hotel_name+"""</font></p>
-        
-        </dl>
+     <head></head>
+     <body>
+       <dl>
+       <dt>
+       <p><font size="4" color="black">"""+hotel_det[0]['hotel_name']+""",</font></p>
+        <p><font size="4" color="black">"""+hotel_det[0]['address']+""",</font></p>
+        <p><font size="4" color="black">"""+hotel_det[0]['mobile_no']+""",</font></p>
+        <p><font size="4" color="black">"""+hotel_det[0]['email']+""",</font></p>
+       <p><font size="4" color="black">"""+book_date+""".</font></p>
 
-      </body>
+        
+        <p><font size="4" color="black">Dear """+name+""",</font></p>
+        <p><font size="4" color="black">We are delighted that you have selected our """+hotel_det[0]['hotel_name']+"""</font></p>
+       <p><font size="4" color="black">On behalf of the entire team at the Hotel Name, I extend you a very welcome and trust stay with us will be both enjoyable and comfortable</font></p>
+       <p><font size="4" color="black">Hotel Name offers a selection of business services and facilities which are detailed in the booklet, placed on the writing table in your room.</font></p>
+       <p><font size="4" color="black">Should you require any assistance or have any specific requirements,please do not hesitate to contact me on extension(999)</font></p>
+        
+       <p><font size="4" color="blue">Confirmation Number:"""+conf_no+"""</font></p>
+       <p><font size="4" color="blue">Arrival Date:"""+arrival+"""</font></p>
+       <p><font size="4" color="blue">Depature Date0: """+depature+"""</font></p>
+       <p><font size="4" color="blue">Room Type: """+room_type+"""</font></p>
+
+       <p><font size="4" color="black">With best regards / Yours sincerely,</font></p>
+        <p><font size="4" color="black">Hotel Manager</font></p>
+       
+       </dl>        
+     </body>
      </html>
      """
-     
-     #msg.attach(MIMEText(msg['subject'],'plain'))
+
      msg.attach(MIMEText(html,'html'))
      
      gmailuser = 'infocuit.testing@gmail.com'
@@ -56,30 +66,20 @@ def sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_typ
 
 
 def callexternalapi(request):
-     #conf_no = request.json['conf_no']
-     #conf_no = request.json['conf_no']
-     #print(conf_no)
      phone = request.json['mobile']
      d = {}
      d['customer_mobile'] = phone
      result = json.loads(gensql('select','ivr_room_customer_booked','*',d))
-     #result = json.loads(result)
      re = result[0]
-     print(re)
-     #car1={"mobile":phone}
-     #car1 = {"conf_no":conf_no}
-     #print(car1)
-     #r = requests.post('https://ivrinfocuit.herokuapp.com/FetchExistingBookings', json=car1)
-     #re = r.json()
-     
-     print(type(re))
+     print(re,type(re))     
      name = re['customer_name']
-     email = "infocuit.banupriya@gmail.com"
+     email = "infocuit.raja@gmail.com"
      message = "Booking Confirmed"
      conf_no = re['customer_confirmation_number']
-     hotel_name = "SMARTMO"
+     #hotel_name = "SMARTMO"
      arrival = re['customer_arrival_date']
      depature = re['customer_depature_date']
      room_type = re['customer_room_type']
-     
-     return sendemailani(name,email,message,conf_no,hotel_name,arrival,depature,room_type)
+     id1 = re['id']
+     book_date = re['customer_booked_date']
+     return sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_date)
