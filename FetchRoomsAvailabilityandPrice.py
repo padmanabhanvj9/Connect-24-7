@@ -74,7 +74,7 @@ def fetchroomsavailabilityandprice(request):
         return(json.dumps(dict1))
         #return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Success"},indent=2))
     except:
-        return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Failure"},indent=2))
+        return(json.dumps({"ServiceStatus":"Success","ServiceMessage":"Failure","count":"0"},indent=2))
     
 def fetchpromotionalmessage(request):
     try: 
