@@ -19,33 +19,42 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
      hotel_det = json.loads(dbget("select * from ivr_hotel_list where id = "+str(ids)+""))
      print(hotel_det)
      html = """\
+     <!DOCTYPE html>
      <html>
-     <head></head>
+     <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     </head>
      <body>
-       <dl>
-       <dt>
-       <p><font size="4" color="black">"""+hotel_det[0]['hotel_name']+""",</font></p>
-        <p><font size="4" color="black">"""+hotel_det[0]['address']+""",</font></p>
-        <p><font size="4" color="black">"""+hotel_det[0]['mobile_no']+""",</font></p>
-        <p><font size="4" color="black">"""+hotel_det[0]['email']+""",</font></p>
-       <p><font size="4" color="black">"""+book_date+""".</font></p>
+     <dl>
+     <dt>
+     <pre>
+     <font size="4" color="black">"""+hotel_det[0]['hotel_name']+""",</font>
+     <font size="4" color="black">"""+hotel_det[0]['address']+""",</font>
+     <font size="4" color="black">"""+hotel_det[0]['mobile_no']+""",</font>
+     <font size="4" color="black">"""+hotel_det[0]['email']+""",</font>
+     <font size="4" color="black">"""+book_date+""".</font>
+     
+     <font size="4" color="black">Dear """+name+""",</font></p>
+     <font size="4" color="black">        We are delighted that you have selected our """+hotel_det[0]['hotel_name']+""" On behalf of the entire team at the 
+     """+hotel_det[0]['hotel_name']+""",extend you a very welcome and trust stay with us will be both enjoyable and comfortable
+     """+hotel_det[0]['hotel_name']+""" offers a selection of business services and facilities.which are detailed in the booklet,
+     placed on the writing table in your room.Should you require any assistance or have any specific
+     requirements,please do not hesitate to contact me oextension(999).</font>
+      </pre>
+<pre>
+     <font size="4" color="blue">Confirmation Number: """+conf_no+"""</font>
+     <font size="4" color="blue">Arrival Date: """+arrival+"""</font>
+     <font size="4" color="blue">Depature Date0: """+depature+"""</font>
+     <font size="4" color="blue">Room Type: """+room_type+"""</font>
 
-        
-        <p><font size="4" color="black">Dear """+name+""",</font></p>
-        <p><font size="4" color="black">We are delighted that you have selected our """+hotel_det[0]['hotel_name']+"""</font></p>
-       <p><font size="4" color="black">On behalf of the entire team at the Hotel Name, I extend you a very welcome and trust stay with us will be both enjoyable and comfortable</font></p>
-       <p><font size="4" color="black">Hotel Name offers a selection of business services and facilities which are detailed in the booklet, placed on the writing table in your room.</font></p>
-       <p><font size="4" color="black">Should you require any assistance or have any specific requirements,please do not hesitate to contact me on extension(999)</font></p>
-        
-       <p><font size="4" color="blue">Confirmation Number:"""+conf_no+"""</font></p>
-       <p><font size="4" color="blue">Arrival Date:"""+arrival+"""</font></p>
-       <p><font size="4" color="blue">Depature Date0: """+depature+"""</font></p>
-       <p><font size="4" color="blue">Room Type: """+room_type+"""</font></p>
-
-       <p><font size="4" color="black">With best regards / Yours sincerely,</font></p>
-        <p><font size="4" color="black">Hotel Manager</font></p>
+     <font size="4" color="black">With best regards / Yours sincerely,</font>
+     <font size="4" color="black">Hotel Manager</font></pre>
        
-       </dl>        
+     </dl>        
      </body>
      </html>
      """
