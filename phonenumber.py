@@ -8,7 +8,7 @@ def phonenumbers_country(request):
    print(tstl.national_number)
    countrycode = tstl.country_code
    national_number = tstl.national_number
-   return (json.dumps({'Status':'Success', 'Returnvalue_Conutry': countrycode, 'Returnvalue_Nationalnnumber': national_number}, indent =4))
+   return (json.dumps({'Status':'Success', 'Returnvalue_country': countrycode, 'Returnvalue_Nationalnumber': national_number}, indent =4))
   except:
    return (json.dumps({'Status':'Failure'}, indent =4))   
       
