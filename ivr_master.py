@@ -36,6 +36,9 @@ from PromotionalCancelMessage import promotionalcancelmessage
 from InsertCustomerRoomBooking import insertcustomerroombooking
 from ValidateConfirmationNumber import validateconfirmationnumber
 from FetchBooking import fetchbooking
+#
+from phonenumber import phonenumbers_country
+
 
 
 app = Flask(__name__)
@@ -134,6 +137,11 @@ def ValidateConfirmationNumber():
 @app.route('/FetchBooking',methods=['POST'])
 def FetchBooking():
    return fetchbooking(request)
+#
+@app.route('/Phonenumbers',methods=['POST'])
+def Phonenumbers():
+   return phonenumbers_country(request)
+
 if __name__ == "__main__":
   app.run(debug=True)
   #app.run(host="192.168.1.10",port=5000)
