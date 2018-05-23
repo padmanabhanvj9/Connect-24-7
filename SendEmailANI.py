@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_date):
      print(name,email,type(email),message,conf_no,arrival,depature, room_type)
      sender = "infocuit.testing@gmail.com"
+     ids = id1
      for i in email:
           receiver = i
           #print(sender,type(sender),receiver,type(receiver))
@@ -15,7 +16,6 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
           msg['from'] = sender
           msg['to'] = receiver
           msg['subject'] = subject
-          ids = id1
           print(ids)
           hotel_det = json.loads(dbget("select * from ivr_hotel_list where id = "+str(ids)+""))
           print(hotel_det)
