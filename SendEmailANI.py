@@ -25,10 +25,6 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
           <html>
           <head>
           <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
           </head>
           <body>
           <dl>
@@ -41,11 +37,11 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
           <font size="4" color="black">"""+book_date+""".</font>
           
           <font size="4" color="black">Dear """+name+""",</font>
-          <font size="4" color="black">   We are delighted that you have selected our """+hotel_det[0]['hotel_name']+""" On behalf of the entire team at the 
-        """+hotel_det[0]['hotel_name']+""",extend you a very welcome and trust stay with us will be both enjoyable and comfortable
-        """+hotel_det[0]['hotel_name']+""" offers a selection of business services and facilities.which are detailed in the booklet,
-        placed on the writing table in your room.Should you require any assistance or have any specific
-        requirements,please do not hesitate to contact me extension(999).</font>
+          <font size="4" color="black">      We are delighted that you have selected our """+hotel_det[0]['hotel_name']+""" On behalf of the entire team at the 
+       """+hotel_det[0]['hotel_name']+""",extend you a very welcome and trust stay with us will be both enjoyable and comfortable
+       """+hotel_det[0]['hotel_name']+""" offers a selection of business services and facilities.which are detailed in the booklet,
+       placed on the writing table in your room.Should you require any assistance or have any specific
+       requirements,please do not hesitate to contact me extension(999).</font>
            </pre>
      <pre>
           <font size="4" color="blue">Confirmation Number: """+conf_no+"""</font>
@@ -85,7 +81,7 @@ def callexternalapi(request):
      print(re,type(re))     
      name = re['customer_name']
      email = ['infocuit.raja@gmail.com','infocuit.daisy@gmail.com','i.sidhanee@iss-consultancy.co.uk','jazizahmed@gmail.com','infocuit.banupriya@gmail.com','r.ahamed@iss-consultancy.co.uk','infocuit.padmanabhan@gmail.com']
-     #email = ['infocuit.raja@gmail.com','infocuit.aravindh@gmail.com']
+     #email = ['infocuit.daisy@gmail.com','infocuit.aravindh@gmail.com']
      message = "Booking Confirmed"
      conf_no = re['customer_confirmation_number']
      #hotel_name = "SMARTMO"
