@@ -44,7 +44,7 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
           """+hotel_det[0]['hotel_name']+""",extend you a very welcome and trust stay with us will be both enjoyable and comfortable
           """+hotel_det[0]['hotel_name']+""" offers a selection of business services and facilities.which are detailed in the booklet,
           placed on the writing table in your room.Should you require any assistance or have any specific
-          requirements,please do not hesitate to contact me oextension(999).</font>
+          requirements,please do not hesitate to contact me extension(999).</font>
            </pre>
      <pre>
           <font size="4" color="blue">Confirmation Number: """+conf_no+"""</font>
