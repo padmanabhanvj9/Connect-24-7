@@ -9,6 +9,7 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
      sender = "infocuit.testing@gmail.com"
      ids = id1
      for i in email:
+
           receiver = i
           #print(sender,type(sender),receiver,type(receiver))
           subject = "Hotel Booking"
@@ -39,12 +40,12 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
           <font size="4" color="black">"""+hotel_det[0]['email']+""",</font>
           <font size="4" color="black">"""+book_date+""".</font>
           
-          <font size="4" color="black">Dear """+name+""",</font></p>
-          <font size="4" color="black">        We are delighted that you have selected our """+hotel_det[0]['hotel_name']+""" On behalf of the entire team at the 
-          """+hotel_det[0]['hotel_name']+""",extend you a very welcome and trust stay with us will be both enjoyable and comfortable
-          """+hotel_det[0]['hotel_name']+""" offers a selection of business services and facilities.which are detailed in the booklet,
-          placed on the writing table in your room.Should you require any assistance or have any specific
-          requirements,please do not hesitate to contact me extension(999).</font>
+          <font size="4" color="black">Dear """+name+""",</font>
+          <font size="4" color="black">   We are delighted that you have selected our """+hotel_det[0]['hotel_name']+""" On behalf of the entire team at the 
+        """+hotel_det[0]['hotel_name']+""",extend you a very welcome and trust stay with us will be both enjoyable and comfortable
+        """+hotel_det[0]['hotel_name']+""" offers a selection of business services and facilities.which are detailed in the booklet,
+        placed on the writing table in your room.Should you require any assistance or have any specific
+        requirements,please do not hesitate to contact me extension(999).</font>
            </pre>
      <pre>
           <font size="4" color="blue">Confirmation Number: """+conf_no+"""</font>
@@ -84,6 +85,7 @@ def callexternalapi(request):
      print(re,type(re))     
      name = re['customer_name']
      email = ['infocuit.raja@gmail.com','infocuit.daisy@gmail.com','i.sidhanee@iss-consultancy.co.uk','jazizahmed@gmail.com','infocuit.banupriya@gmail.com','r.ahamed@iss-consultancy.co.uk','infocuit.padmanabhan@gmail.com']
+     #email = ['infocuit.raja@gmail.com','infocuit.aravindh@gmail.com']
      message = "Booking Confirmed"
      conf_no = re['customer_confirmation_number']
      #hotel_name = "SMARTMO"
