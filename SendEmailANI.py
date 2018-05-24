@@ -49,7 +49,7 @@ def sendemailani(name,email,message,conf_no,arrival,depature,room_type,id1,book_
      <pre>
           <font size="4" color="blue">Confirmation Number: """+conf_no+"""</font>
           <font size="4" color="blue">Arrival Date: """+arrival+"""</font>
-          <font size="4" color="blue">Depature Date0: """+depature+"""</font>
+          <font size="4" color="blue">Depature Date: """+depature+"""</font>
           <font size="4" color="blue">Room Type: """+room_type+"""</font>
 
           <font size="4" color="black">With best regards / Yours sincerely,</font>
